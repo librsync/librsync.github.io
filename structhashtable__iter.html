@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
-<title>librsync: rs_op_kind_name Struct Reference</title>
+<title>librsync: hashtable_iter Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -52,24 +52,65 @@ $(function() {
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">rs_op_kind_name Struct Reference</div>  </div>
+<div class="title">hashtable_iter Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The hashtable iterator type.  
+ <a href="structhashtable__iter.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a42bca1e2e3eade13c85555ff26ce3980"><td class="memItemLeft" align="right" valign="top"><a id="a42bca1e2e3eade13c85555ff26ce3980"></a>
-char const  *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr class="separator:a42bca1e2e3eade13c85555ff26ce3980"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b376fedd349e40880c24fbe2cac5676"><td class="memItemLeft" align="right" valign="top"><a id="a3b376fedd349e40880c24fbe2cac5676"></a>
-enum rs_op_kind const&#160;</td><td class="memItemRight" valign="bottom"><b>kind</b></td></tr>
-<tr class="separator:a3b376fedd349e40880c24fbe2cac5676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15b1588c761e2098cf011a30a2771bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="hashtable_8h.html#a07e36569668e35018fe256a44252be1c">hashtable_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable__iter.html#ae15b1588c761e2098cf011a30a2771bc">htable</a></td></tr>
+<tr class="memdesc:ae15b1588c761e2098cf011a30a2771bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The hashtable to iterate over.  <a href="#ae15b1588c761e2098cf011a30a2771bc">More...</a><br /></td></tr>
+<tr class="separator:ae15b1588c761e2098cf011a30a2771bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a437e6fa2069ff62e477a83242d7cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable__iter.html#a11a437e6fa2069ff62e477a83242d7cf">index</a></td></tr>
+<tr class="memdesc:a11a437e6fa2069ff62e477a83242d7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index to scan from next.  <a href="#a11a437e6fa2069ff62e477a83242d7cf">More...</a><br /></td></tr>
+<tr class="separator:a11a437e6fa2069ff62e477a83242d7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="command_8h_source.html#l00050">50</a> of file <a class="el" href="command_8h_source.html">command.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="command_8h_source.html">command.h</a></li>
+<div class="textblock"><p>The hashtable iterator type. </p>
+
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00141">141</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="ae15b1588c761e2098cf011a30a2771bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae15b1588c761e2098cf011a30a2771bc">&#9670;&nbsp;</a></span>htable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="hashtable_8h.html#a07e36569668e35018fe256a44252be1c">hashtable_t</a>* hashtable_iter::htable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The hashtable to iterate over. </p>
+
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00142">142</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+
+</div>
+</div>
+<a id="a11a437e6fa2069ff62e477a83242d7cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11a437e6fa2069ff62e477a83242d7cf">&#9670;&nbsp;</a></span>index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int hashtable_iter::index</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The index to scan from next. </p>
+
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00143">143</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="hashtable_8h_source.html">hashtable.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.10-->
