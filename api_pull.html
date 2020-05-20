@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
-<title>librsync: Pull stream interface</title>
+<title>librsync: Callback API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -51,21 +51,21 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Pull stream interface </div>  </div>
+<div class="title">Callback API </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>As an alternative to <a class="el" href="api_streaming.html">Streaming jobs</a>, librsync provides a "pull"-mode interface where it will repeatedly call application-provided callbacks to get more input data and to accept output data.</p>
+<div class="textblock"><p>As an alternative to <a class="el" href="api_streaming.html">Streaming API</a>, librsync provides a "pull-mode" callback interface where it will repeatedly call application-provided callbacks to get more input data and to accept output data.</p>
 <p>Pull jobs are also created using <a class="el" href="librsync_8h.html#a6597cc79df16a2a58e281afb07ffdb2e" title="Start generating a signature.">rs_sig_begin()</a>, rs_loadsig_begin,() <a class="el" href="delta_8c.html#a65478298ed5fdebb7c91970d354e9ab3" title="Prepare to compute a streaming delta.">rs_delta_begin()</a>, <a class="el" href="librsync_8h.html#ae6e53e38e1490c69999d44360713d073" title="Apply a delta to a basis file to recreate the new file.">rs_patch_begin()</a>.</p>
 <p>However, rather than calling <a class="el" href="job_8c.html#a637e42431bf4df09af378c5a1efa60f0" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a>, the application should then call <a class="el" href="job_8c.html#a5ad2866da9b65cf2f7a59b51dc44bf51" title="Actively process a job, by making callbacks to fill and empty the buffers until the job is done.">rs_job_drive()</a>, passing an input and an output callback. <a class="el" href="job_8c.html#a5ad2866da9b65cf2f7a59b51dc44bf51" title="Actively process a job, by making callbacks to fill and empty the buffers until the job is done.">rs_job_drive()</a> takes an opaque pointer for both the input and output callback: this could be a <code>FILE*</code> or some similar object telling them what to read and write.</p>
-<h1><a class="anchor" id="autotoc_md57"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 Non-blocking IO</h1>
 <p>The librsync interface allows non-blocking streaming processing of data. This means that the library will accept input and produce output when it suits the application. If nonblocking file IO is used and the IO callbacks support it, then librsync will never block waiting for IO.</p>
 <p>Normally callbacks will read/write the whole buffer when they're called, but in some cases they might not be able to process all of it, or perhaps not process any at all. This might happen if the callbacks are connected to a nonblocking socket. Either of two things can happen in this case. If the callback returns <a class="el" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af2d289bbc65678b4b00f56a2e6632957" title="Blocked waiting for more data.">RS_BLOCKED</a>, then <a class="el" href="job_8c.html#a637e42431bf4df09af378c5a1efa60f0" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> will also return <a class="el" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af2d289bbc65678b4b00f56a2e6632957" title="Blocked waiting for more data.">RS_BLOCKED</a> shortly.</p>
 <p>When an IO callback blocks, it is the responsibility of the application to work out when it will be able to make progress and therefore when it is worth calling <a class="el" href="job_8c.html#a637e42431bf4df09af378c5a1efa60f0" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> again. Typically this involves a mechanism like <code>poll</code> or <code>select</code> to wait for the file descriptor to be ready.</p>
-<h1><a class="anchor" id="autotoc_md58"></a>
+<h1><a class="anchor" id="autotoc_md60"></a>
 Blocking IO</h1>
 <p>The IO callbacks are allowed to block. This will of course mean that the application's call to <a class="el" href="job_8c.html#a5ad2866da9b65cf2f7a59b51dc44bf51" title="Actively process a job, by making callbacks to fill and empty the buffers until the job is done.">rs_job_drive()</a> will also block.</p>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md61"></a>
 Partial completion</h1>
 <p>IO callbacks are also allowed to process or provide only part of the requested data, as will commonly happen with socket IO.</p>
 <p>The library might not get as much input as it wanted when it is first called. If it gets a partial read, it needs to hold onto that valuable and irreplaceable data.</p>
@@ -101,7 +101,7 @@ Partial completion</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

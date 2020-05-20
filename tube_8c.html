@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -91,8 +91,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rs_tube_is_idle</b> (<
 <div class="textblock"><p>A somewhat elastic but fairly small buffer for data passing through a stream.</p>
 <p>In most cases the iter can adjust to send just as much data will fit. In some cases that would be too complicated, because it has to transmit an integer or something similar. So in that case we stick whatever won't fit into a small buffer.</p>
 <p>A tube can contain some literal data to go out (typically command bytes), and also an instruction to copy data from the stream's input or from some other location. Both literal data and a copy command can be queued at the same time, but only in that order and at most one of each.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000021">Todo:</a></b></dt><dd>As an optimization, write it directly to the stream if possible. But for simplicity don't do that yet.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000022">Todo:</a></b></dt><dd>I think our current copy code will lock up if the application only ever calls us with either input or output buffers, and not both. So I guess in that case we might need to copy into some temporary buffer space, and then back out again later. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000020">Todo:</a></b></dt><dd>As an optimization, write it directly to the stream if possible. But for simplicity don't do that yet.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000021">Todo:</a></b></dt><dd>I think our current copy code will lock up if the application only ever calls us with either input or output buffers, and not both. So I guess in that case we might need to copy into some temporary buffer space, and then back out again later. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="tube_8c_source.html">tube.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -210,7 +210,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rs_tube_is_idle</b> (<
 <p>Queue up a request to copy through <code>len</code> bytes from the input to the output of the stream. </p>
 <p>The data is copied from the scoop (if there is anything there) or from the input, on the next call to <a class="el" href="tube_8c.html#a15809106e8f91386fb19f3934f73b993" title="Push some data into the tube for storage.">rs_tube_write()</a>.</p>
 <p>We can only accept this request if there is no copy command already pending.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000023">Todo:</a></b></dt><dd>Try to do the copy immediately, and return a result. Then, people can try to continue if possible. Is this really required? Callers can just go out and back in again after flushing the tube. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000022">Todo:</a></b></dt><dd>Try to do the copy immediately, and return a result. Then, people can try to continue if possible. Is this really required? Callers can just go out and back in again after flushing the tube. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="tube_8c_source.html#l00178">178</a> of file <a class="el" href="tube_8c_source.html">tube.c</a>.</p>
 
@@ -280,7 +280,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rs_tube_is_idle</b> (<
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

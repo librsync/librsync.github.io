@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
-<title>librsync: TODO</title>
+<title>librsync: librsync TODO</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -51,19 +51,17 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">TODO </div>  </div>
+<div class="title">librsync TODO </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><ul>
 <li>We have a few functions to do with reading a netint, stashing it somewhere, then moving into a different state. Is it worth writing generic functions for that, or would it be too confusing?</li>
-<li>Duplicate block handling. Currently duplicate blocks are included in the signature, but we only put the first duplicate block in the hashtable so the delta only includes references to the first block. This can result in sub-optimal copy commands, breaking single large copies with duplicate blocks into multiple copies referencing the earlier copy of the block. However, this could also make patching use the disk cache more effectively. This solution is probably fine, particularly given how small copy instructions are, but there might be solutions for improving copy commands for long runs of duplicate blocks.</li>
 <li><p class="startli">Optimisations and code cleanups;</p>
 <p class="startli"><a class="el" href="scoop_8c.html">scoop.c</a>: Scoop needs major refactor. Perhaps the API needs tweaking?</p>
-<p class="startli">rsync.h: <a class="el" href="structrs__buffers__s.html" title="Description of input and output buffers.">rs_buffers_s</a> and rs_buffers_t should be one typedef?</p><ul>
-<li>Just how useful is rs_job_drive anyway?</li>
-</ul>
+<p class="startli">rsync.h: <a class="el" href="structrs__buffers__s.html" title="Description of input and output buffers.">rs_buffers_s</a> and rs_buffers_t should be one typedef?</p>
 <p class="startli"><a class="el" href="mdfour_8c.html">mdfour.c</a>: This code has a different API to the RSA code in libmd and is coupled with librsync in unhealthy ways (trace?). Recommend changing to RSA API?</p>
 </li>
+<li>Just how useful is rs_job_drive anyway?</li>
 <li><p class="startli">Don't use the rs_buffers_t structure.</p>
 <p class="startli">There's something confusing about the existence of this structure. In part it may be the name. I think people expect that it will be something that behaves like a FILE* or C++ stream, and it really does not. Also, the structure does not behave as an object: it's really just a shorthand for passing values in to the encoding routines, and so does not have a lot of identity of its own.</p>
 <p class="startli">An alternative might be</p>
@@ -90,32 +88,17 @@ $(function() {
 </ul>
 <p class="startli">Some are more likely to change than others. We need a chart showing which source files depend on which variable.</p>
 </li>
-<li>Encoding implementation<ul>
-<li>Join up signature commands</li>
-</ul>
-</li>
 <li>Encoding algorithm<ul>
 <li><p class="startli">Self-referential copy commands</p>
 <p class="startli">Suppose we have a file with repeating blocks. The gdiff format allows for COPY commands to extend into the <em>output</em> file so that they can easily point this out. By doing this, they get compression as well as differencing.</p>
 <p class="startli">It'd be pretty simple to implement this, I think: as we produce output, we'd also generate checksums (using the search block size), and add them to the sum set. Then matches will fall out automatically, although we might have to specially allow for short blocks.</p>
 <p class="startli">However, I don't see many files which have repeated 1kB chunks, so I don't know if it would be worthwhile.</p>
 </li>
-<li><p class="startli">Extended files</p>
-<p class="startli">Suppose the new file just has data added to the end. At the moment, we'll match everything but the last block of the old file. It won't match, because at the moment the search block size is only reduced at the end of the <em>new</em> file. This is a little inefficient, because ideally we'd know to look for the last block using the shortened length.</p>
-<p class="startli">This is a little hard to implement, though perhaps not impossible. The current rolling search algorithm can only look for one block size at any time. Can we do better? Can we look for all block lengths that could match anything?</p>
-<p class="startli">Remember also that at the moment we don't send the block length in the signature; it's implied by the length of the new block that it matches. This is kind of cute, and importantly helps reduce the length of the signature.</p>
-</li>
-<li><p class="startli">State-machine searching</p>
-<p class="startli">Building a state machine from a regular expression is a brilliant idea. (I think <em>The Practice of Programming</em> walks through the construction of this at a fairly simple level.)</p>
-<p class="startli">In particular, we can search for any of a large number of alternatives in a very efficient way, with much less effort than it would take to search for each the hard way. Remember also the string-searching algorithms and how much time they can take.</p>
-<p class="startli">I wonder if we can use similar principles here rather than the current simple rolling-sum mechanism? Could it let us match variable-length signatures?</p>
-</li>
 </ul>
 </li>
-<li><p class="startli">Support gzip compression of the difference stream. Does this belong here, or should it be in the client and librsync just have an interface that lets it cleanly plug in?</p>
+<li><p class="startli">Support compression of the difference stream. Does this belong here, or should it be in the client and librsync just have an interface that lets it cleanly plug in?</p>
 <p class="startli">I think if we're going to just do plain gzip, rather than rsync-gzip, then it might as well be external.</p>
-</li>
-<li><p class="startli">rsync-gzip: preload with the omitted text so as to get better compression. Abo thinks this gets significantly better compression. On the other hand we have to important and maintain our own zlib fork, at least until we can persuade the upstream to take the necessary patch. Can that be done?</p>
+<p class="startli">rsync-gzip: preload with the omitted text so as to get better compression. Abo thinks this gets significantly better compression. On the other hand we have to important and maintain our own zlib fork, at least until we can persuade the upstream to take the necessary patch. Can that be done?</p>
 <p class="startli">abo says </p><pre class="fragment"> It does get better compression, but at a price. I actually
  think that getting the code to a point where a feature like
  this can be easily added or removed is more important than the
@@ -133,34 +116,17 @@ $(function() {
 <li><p class="startli">Licensing</p>
 <p class="startli">Will the GNU Lesser GPL work? Specifically, will it be a problem in distributing this with Mozilla or Apache?</p>
 </li>
-<li>Checksums<ul>
-<li><p class="startli">Do we really need to require that signatures arrive after the data they describe? Does it make sense in HTTP to resume an interrupted transfer?</p>
-<p class="startli">I hope we can do this. If we can't, however, then we should relax this constraint and allow signatures to arrive before the data they describe. (Really? Do we care?)</p>
-</li>
-<li>Allow variable-length checksums in the signature; the signature will have to describe the length of the sums and we must compare them taking this into account.</li>
-</ul>
-</li>
 <li>Testing<ul>
 <li>Just more testing in general.</li>
 <li>Test broken pipes and that IO errors are handled properly.</li>
 <li>Test files &gt;2GB, &gt;4GB. Presumably these must be done in streams so that the disk requirements to run the test suite are not too ridiculous. I wonder if it will take too long to run these tests? Probably, but perhaps we can afford to run just one carefully-chosen test.</li>
 <li>Fuzz instruction streams. <a href="https://code.google.com/p/american-fuzzy-lop/">https://code.google.com/p/american-fuzzy-lop/</a>?</li>
 <li>Generate random data; do random mutations.</li>
-<li>Try different block lengths.</li>
 <li>Tests should fail if they can't find their inputs, or have zero inputs: at present they tend to succeed by default.</li>
-<li>Test varying strong-sum inputs: default, short, long.</li>
 </ul>
 </li>
 <li>Security audit<ul>
-<li>If this code was to read differences or sums from random machines on the network, then it's a security boundary. Make sure that corrupt input data can't make the program crash or misbehave.</li>
-</ul>
-</li>
-<li>Long files<ul>
-<li>How do we handle the large signatures required to support large files? In particular, how do we choose an appropriate block size when the length is unknown? Perhaps we should allow a way for the signature to scale up as it grows.</li>
-</ul>
-</li>
-<li>Perhaps make extracted signatures still be wrapped in commands. What would this lead to?<ul>
-<li>We'd know how much signature data we expect to read, rather than requiring it to be terminated by the caller. </li>
+<li>If this code was to read differences or sums from random machines on the network, then it's a security boundary. Make sure that corrupt input data can't make the program crash or misbehave. </li>
 </ul>
 </li>
 </ul>
@@ -189,7 +155,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

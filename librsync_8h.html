@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -484,7 +484,7 @@ api_callbacks </dd></dl>
 <p>Job of work to be done. </p>
 <p>Created by functions such as <a class="el" href="librsync_8h.html#a6597cc79df16a2a58e281afb07ffdb2e" title="Start generating a signature.">rs_sig_begin()</a>, and then iterated over by <a class="el" href="librsync_8h.html#aede8e0f42424b9aa29093f94b59ea029" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a>.</p>
 <p>The contents are opaque to the application, and instances are always allocated by the library.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming jobs</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming API</a> </dd>
 <dd>
 <a class="el" href="structrs__job.html" title="The contents of this structure are private.">rs_job</a> </dd></dl>
 
@@ -505,7 +505,7 @@ api_callbacks </dd></dl>
 </div><div class="memdoc">
 
 <p>Type of application-supplied function for <a class="el" href="librsync_8h.html#a85d48e8216b848b9757a076f829ac4a8" title="Actively process a job, by making callbacks to fill and empty the buffers until the job is done.">rs_job_drive()</a>. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_pull.html">Pull stream interface</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_pull.html">Callback API</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="librsync_8h_source.html#l00399">399</a> of file <a class="el" href="librsync_8h_source.html">librsync.h</a>.</p>
 
@@ -533,7 +533,7 @@ api_callbacks </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="librsync_8h_source.html#l00492">492</a> of file <a class="el" href="librsync_8h_source.html">librsync.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="librsync_8h_source.html#l00493">493</a> of file <a class="el" href="librsync_8h_source.html">librsync.h</a>.</p>
 
 </div>
 </div>
@@ -717,7 +717,7 @@ api_callbacks </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="api_trace.html">Debugging trace and error logging</a></dd></dl>
 <p>Set trace callback.</p>
 <p>The callback scheme allows for use within applications that may have their own particular ways of reporting errors: log files for a web server, perhaps, and an error dialog for a browser.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000019">Todo:</a></b></dt><dd>Do we really need such fine-grained control, or just yes/no tracing? </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000018">Todo:</a></b></dt><dd>Do we really need such fine-grained control, or just yes/no tracing? </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="trace_8c_source.html#l00065">65</a> of file <a class="el" href="trace_8c_source.html">trace.c</a>.</p>
 
@@ -1042,7 +1042,7 @@ api_callbacks </dd></dl>
 
 <p>Log the rs_signature_delta match stats. </p>
 
-<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00259">259</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00261">261</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
 
 </div>
 </div>
@@ -1064,7 +1064,7 @@ api_callbacks </dd></dl>
 
 <p>Deep deallocation of checksums. </p>
 
-<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00296">296</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00298">298</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
 
 </div>
 </div>
@@ -1086,7 +1086,7 @@ api_callbacks </dd></dl>
 
 <p>Dump signatures to the log. </p>
 
-<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00302">302</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00304">304</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
 
 </div>
 </div>
@@ -1126,7 +1126,7 @@ api_callbacks </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253" title="Return codes from nonblocking rsync operations.">rs_result</a> that caused iteration to stop.</dd></dl>
 <p><code>buffers-&gt;eof_in</code> should be true if there is no more data after what's in the input buffer. The final block checksum will run across whatever's in there, without trying to accumulate anything else.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming jobs</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming API</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="job_8c_source.html#l00093">93</a> of file <a class="el" href="job_8c_source.html">job.c</a>.</p>
 
@@ -1271,7 +1271,7 @@ api_callbacks </dd></dl>
 </div><div class="memdoc">
 
 <p>Get or check signature arguments for a given file size. </p>
-<p>This can be used to get the recommended arguments for generating a signature. On calling, old_fsize should be set to the old file size or -1 for "unknown". The magic and block_len arguments should be set to a valid value or 0 for "recommended". The strong_len input should be set to a valid value, 0 for "maximum", or -1 for "miniumum". Use strong_len=0 for the best protection against active hash collision attacks for the given magic type. Use strong_len=-1 for the smallest signature size that is safe against random hash collisions for the block_len and old_fsize. On return the 0 or -1 input args will be set to recommended values and the returned result will indicate if any inputs were invalid.</p>
+<p>This can be used to get the recommended arguments for generating a signature. On calling, old_fsize should be set to the old file size or -1 for "unknown". The magic and block_len arguments should be set to a valid value or 0 for "recommended". The strong_len input should be set to a valid value, 0 for "maximum", or -1 for "miniumum". Use strong_len=0 for the best protection against active hash collision attacks for the given magic type. Use strong_len=-1 for the smallest signature size that is safe against random hash collisions for the block_len and old_fsize. Use strong_len=20 for something probably good enough against attacks with smaller signatures. On return the 0 or -1 input args will be set to recommended values and the returned result will indicate if any inputs were invalid.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">old_fsize</td><td>- the original file size (-1 for "unknown").</td></tr>
@@ -1332,7 +1332,7 @@ api_callbacks </dd></dl>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="librsync_8h.html#a2e111b9ef4acef02f812ec58b8217c8c" title="Generate the signature of a basis file, and write it out to another.">rs_sig_file()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00115">115</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00111">111</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
 
 </div>
 </div>
@@ -1402,7 +1402,7 @@ api_callbacks </dd></dl>
 <p>Call this after loading a signature to index it. </p>
 <p>Use <a class="el" href="librsync_8h.html#a4e801efb30ba20e710f81278473147d1" title="Deep deallocation of checksums.">rs_free_sumset()</a> to release it after use. </p>
 
-<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00276">276</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sumset_8c_source.html#l00278">278</a> of file <a class="el" href="sumset_8c_source.html">sumset.c</a>.</p>
 
 </div>
 </div>
@@ -1445,7 +1445,7 @@ api_callbacks </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Implement COPY commands.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="librsync_8h.html#a76f5d5851aaad2c17bfd9256e344626d" title="Apply a patch, relative to a basis, into a new file.">rs_patch_file()</a> </dd>
 <dd>
-<a class="el" href="api_streaming.html">Streaming jobs</a> </dd></dl>
+<a class="el" href="api_streaming.html">Streaming API</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="patch_8c_source.html#l00251">251</a> of file <a class="el" href="patch_8c_source.html">patch.c</a>.</p>
 
@@ -1651,13 +1651,14 @@ api_callbacks </dd></dl>
 </div><div class="memdoc">
 
 <p>Generate the signature of a basis file, and write it out to another. </p>
+<p>It's recommended you use <a class="el" href="librsync_8h.html#a3c4c3fcea2814610109536f3ae029c5e" title="Get or check signature arguments for a given file size.">rs_sig_args()</a> to get the recommended arguments for this based on the original file size.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">old_file</td><td>Stdio readable file whose signature will be generated.</td></tr>
     <tr><td class="paramname">sig_file</td><td>Writable stdio file to which the signature will be written./</td></tr>
-    <tr><td class="paramname">block_len</td><td>block size for signature generation, in bytes</td></tr>
-    <tr><td class="paramname">strong_len</td><td>truncated length of strong checksums, in bytes</td></tr>
-    <tr><td class="paramname">sig_magic</td><td>A signature magic number indicating what format to use.</td></tr>
+    <tr><td class="paramname">block_len</td><td>Checksum block size to use (0 for "recommended"). Larger values make the signature shorter, and the delta longer.</td></tr>
+    <tr><td class="paramname">strong_len</td><td>Strongsum length in bytes to use (0 for "maximum", -1 for "minimum"). Smaller values make the signature shorter but increase the risk of corruption from hash collisions.</td></tr>
+    <tr><td class="paramname">sig_magic</td><td>Signature file format to generate (0 for "recommended"). See <a class="el" href="librsync_8h.html#ab6abafd1db0a3947bb3c076507f4f7c2" title="A uint32 magic number, emitted in bigendian/network order at the start of librsync files.">rs_magic_number</a>.</td></tr>
     <tr><td class="paramname">stats</td><td>Optional pointer to receive statistics.</td></tr>
   </table>
   </dd>
@@ -1869,7 +1870,7 @@ api_callbacks </dd></dl>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

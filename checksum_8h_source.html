@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;{</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">if</span> (sum-&gt;kind == RS_ROLLSUM)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="comment">/* We apply mix32() to rollsums before using them for matching. */</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="hashtable_8h.html#a9c88bdc4b6b54f6388b8a2c43ab506e1">mix32</a>(RollsumDigest(&amp;sum-&gt;sum.rs));</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="hashtable_8h.html#ac1bb2e17d20ca0fc08ab9e02ecaa698f">mix32</a>(RollsumDigest(&amp;sum-&gt;sum.rs));</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span> rabinkarp_digest(&amp;sum-&gt;sum.rk);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
@@ -195,7 +195,7 @@ $(function() {
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif                          </span><span class="comment">/* _CHECKSUM_H_ */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="ahashtable_8h_html_a9c88bdc4b6b54f6388b8a2c43ab506e1"><div class="ttname"><a href="hashtable_8h.html#a9c88bdc4b6b54f6388b8a2c43ab506e1">mix32</a></div><div class="ttdeci">static unsigned mix32(unsigned int h)</div><div class="ttdoc">MurmurHash3 finalization mix function.</div><div class="ttdef"><b>Definition:</b> <a href="hashtable_8h_source.html#l00147">hashtable.h:147</a></div></div>
+<div class="ttc" id="ahashtable_8h_html_ac1bb2e17d20ca0fc08ab9e02ecaa698f"><div class="ttname"><a href="hashtable_8h.html#ac1bb2e17d20ca0fc08ab9e02ecaa698f">mix32</a></div><div class="ttdeci">static unsigned mix32(unsigned h)</div><div class="ttdoc">MurmurHash3 finalization mix function.</div><div class="ttdef"><b>Definition:</b> <a href="hashtable_8h_source.html#l00172">hashtable.h:172</a></div></div>
 <div class="ttc" id="alibrsync_8h_html"><div class="ttname"><a href="librsync_8h.html">librsync.h</a></div></div>
 <div class="ttc" id="astructweaksum_html"><div class="ttname"><a href="structweaksum.html">weaksum</a></div><div class="ttdoc">Abstract wrapper around weaksum implementations.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8h_source.html#l00051">checksum.h:51</a></div></div>
 <div class="ttc" id="ahashtable_8h_html"><div class="ttname"><a href="hashtable_8h.html">hashtable.h</a></div></div>
@@ -222,7 +222,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:01 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:30 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

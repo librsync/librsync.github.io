@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -86,7 +86,7 @@ Functions</h2></td></tr>
 <p>librsync basically does two types of IO. It reads network integers of various lengths which encode command and control information such as versions and signatures. It also does bulk data transfer.</p>
 <p>IO of network integers is internally buffered, because higher levels of the code need to see them transmitted atomically: it's no good to read half of a uint32. So there is a small and fixed length internal buffer which accumulates these. Unlike previous versions of the library, we don't require that the caller hold the start until the whole thing has arrived, which guarantees that we can always make progress.</p>
 <p>On each call into a stream iterator, it should begin by trying to flush output. This may well use up all the remaining stream space, in which case nothing else can be done.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>Kill this file and move the vestigial code remaining closer to where it's used. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>Kill this file and move the vestigial code remaining closer to where it's used. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="stream_8c_source.html">stream.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -171,7 +171,7 @@ Functions</h2></td></tr>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

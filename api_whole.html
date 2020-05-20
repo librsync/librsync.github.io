@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -55,19 +55,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Some applications do not require the fine-grained control over IO, but rather just want to process a whole file with a single call. librsync provides whole-file APIs to do exactly that.</p>
-<p>These functions open files, process the entire contents, and return an overall result. The whole-file operations are the core of the <a class="el" href="rdiff.html">rdiff</a> program.</p>
-<p>Processing of a whole file begins with creation of a <a class="el" href="librsync_8h.html#add6622b38e3fa557301a190876d5ed4a" title="Job of work to be done.">rs_job_t</a> object for the appropriate operation, just as if the application was going to do buffering itself. After creation, the job may be passed to rs_whole_run(), which will feed it to and from two FILEs as necessary until end of file is reached or the operation completes.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="librsync_8h.html#a2e111b9ef4acef02f812ec58b8217c8c" title="Generate the signature of a basis file, and write it out to another.">rs_sig_file()</a> </dd>
+<p>These functions open files, process the entire contents, and return an overall result. The whole-file operations are the core of the <a class="el" href="page_rdiff.html">rdiff command</a>.</p>
+<p>This interface is implemented on top of the <a class="el" href="api_streaming.html">Streaming API</a>. Processing of a whole file begins with creation of a <a class="el" href="librsync_8h.html#add6622b38e3fa557301a190876d5ed4a" title="Job of work to be done.">rs_job_t</a> object for the appropriate operation, just as if the application was going to do buffering itself. After creation, the job may be passed to rs_whole_run(), which will feed it to and from two FILEs as necessary until end of file is reached or the operation completes.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="librsync_8h.html#a3c4c3fcea2814610109536f3ae029c5e" title="Get or check signature arguments for a given file size.">rs_sig_args()</a> </dd>
+<dd>
+<a class="el" href="librsync_8h.html#a2e111b9ef4acef02f812ec58b8217c8c" title="Generate the signature of a basis file, and write it out to another.">rs_sig_file()</a> </dd>
 <dd>
 <a class="el" href="librsync_8h.html#a69a679a66bcf4b35b3e22ca0e9791c02" title="Load signatures from a signature file into memory.">rs_loadsig_file()</a> </dd>
 <dd>
-rs_mdfour_file() </dd>
-<dd>
 <a class="el" href="librsync_8h.html#a633e49044273bd2b7c1ce568b52b7e91" title="Generate a delta between a signature and a new file into a delta file.">rs_delta_file()</a> </dd>
 <dd>
-<a class="el" href="librsync_8h.html#a76f5d5851aaad2c17bfd9256e344626d" title="Apply a patch, relative to a basis, into a new file.">rs_patch_file()</a></dd>
-<dd>
-api_streaming </dd></dl>
+<a class="el" href="librsync_8h.html#a76f5d5851aaad2c17bfd9256e344626d" title="Apply a patch, relative to a basis, into a new file.">rs_patch_file()</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- HTML footer for doxygen 1.8.10-->
@@ -93,7 +91,7 @@ api_streaming </dd></dl>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -90,7 +90,7 @@ Functions</h2></td></tr>
 <p>Since we put the buffers completely under the control of the caller, we can't count on ever getting this much data all in one go. We can't simply wait, because the caller might have a smaller buffer than we require and so we'll never get it. For the same reason we must always accept all the data we're given.</p>
 <p>So, stream input data that's required for readahead is put into a special buffer, from which the caller can then read. It's essentially like an internal pipe, which on any given read request may or may not be able to actually supply the data.</p>
 <p>As a future optimization, we might try to take data directly from the input buffer if there's already enough there.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd>We probably know a maximum amount of data that can be scooped up, so we could just avoid dynamic allocation. However that can't be fixed at compile time, because when generating a delta it needs to be large enough to hold one full block. Perhaps we can set it up when the job is allocated? It would be kind of nice to not do any memory allocation after startup, as bzlib does this. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">Todo:</a></b></dt><dd>We probably know a maximum amount of data that can be scooped up, so we could just avoid dynamic allocation. However that can't be fixed at compile time, because when generating a delta it needs to be large enough to hold one full block. Perhaps we can set it up when the job is allocated? It would be kind of nice to not do any memory allocation after startup, as bzlib does this. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="scoop_8c_source.html">scoop.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -340,7 +340,7 @@ Functions</h2></td></tr>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

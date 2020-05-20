@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -64,8 +64,8 @@ $(function() {
 <p>These are all available in three different modes:</p>
 <ul>
 <li><a class="el" href="api_whole.html">Whole-file API</a> - for applications that just want to make and use signatures and deltas on whole files with a single function call.</li>
-<li><a class="el" href="api_streaming.html">Streaming jobs</a> - a "push" mode where the caller provides input and output space, and <a class="el" href="job_8c.html#a637e42431bf4df09af378c5a1efa60f0" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> makes as much progress as it can.</li>
-<li><a class="el" href="api_pull.html">Pull stream interface</a> - a "pull" mode where librsync will call application-provided callbacks to fill and empty buffers.</li>
+<li><a class="el" href="api_streaming.html">Streaming API</a> - a "push" mode where the caller provides input and output space, and <a class="el" href="job_8c.html#a637e42431bf4df09af378c5a1efa60f0" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> makes as much progress as it can.</li>
+<li><a class="el" href="api_pull.html">Callback API</a> - a "pull" mode where librsync will call application-provided callbacks to fill and empty buffers.</li>
 </ul>
 <p>Other documentation pages:</p>
 <ul>
@@ -76,12 +76,12 @@ $(function() {
 <li><a class="el" href="versioning.html">Versioning</a></li>
 </ul>
 <p>The public interface to librsync is <a class="el" href="librsync_8h.html">librsync.h</a>, and other headers are internal.</p>
-<p>The librsync tree also provides the <a class="el" href="rdiff.html">rdiff</a> command-line tool, which makes this functionality available to users and scripting languages.</p>
-<h1><a class="anchor" id="autotoc_md55"></a>
+<p>The librsync tree also provides the <a class="el" href="page_rdiff.html">rdiff command</a>, which makes this functionality available to users and scripting languages.</p>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Naming conventions</h1>
 <p>All external symbols have the prefix <code>rs_</code>, or <code>RS_</code> in the case of preprocessor symbols. (There are some private symbols that currently don't match this, but these are considered to be bugs.)</p>
 <p>Symbols beginning with <code>rs__</code> (double underscore) are private and should not be called from outside the library.</p>
-<h1><a class="anchor" id="autotoc_md56"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Threaded IO</h1>
 <p>librsync may be used from threaded programs. librsync does no synchronization itself. Each job should be guarded by a monitor or used by only a single thread.</p>
 <p>Be careful that the trace functions are safe to call from multiple threads. </p>
@@ -110,7 +110,7 @@ Threaded IO</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

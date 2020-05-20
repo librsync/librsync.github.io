@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -77,8 +77,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Generate file signatures.</p>
-<p>Generating checksums is pretty easy, since we can always just process whatever data is available. When a whole block has arrived, or we've reached the end of the file, we write the checksum out.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Perhaps force blocks to be a multiple of 64 bytes, so that we can be sure checksum generation will be more efficient. I guess it will be OK at the moment, though, because tails are only used if necessary. </dd></dl>
+<p>Generating checksums is pretty easy, since we can always just process whatever data is available. When a whole block has arrived, or we've reached the end of the file, we write the checksum out. </p>
 
 <p class="definition">Definition in file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -108,7 +107,7 @@ Functions</h2></td></tr>
 
 <p>State of trying to send the signature header. </p>
 
-<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00050">50</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00046">46</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
 
 </div>
 </div>
@@ -138,7 +137,7 @@ Functions</h2></td></tr>
 
 <p>State of reading a block and trying to generate its sum. </p>
 
-<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00093">93</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00089">89</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
 
 </div>
 </div>
@@ -187,7 +186,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="librsync_8h.html#a2e111b9ef4acef02f812ec58b8217c8c" title="Generate the signature of a basis file, and write it out to another.">rs_sig_file()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00115">115</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mksum_8c_source.html#l00111">111</a> of file <a class="el" href="mksum_8c_source.html">mksum.c</a>.</p>
 
 </div>
 </div>
@@ -215,7 +214,7 @@ Functions</h2></td></tr>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -54,7 +54,7 @@ $(function() {
 <div class="title">Installing librsync </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md50"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md52"></a>
 Requirements</h1>
 <p>To build librsync you will need:</p>
 <ul>
@@ -64,7 +64,7 @@ Requirements</h1>
 <li><a href="http://rpm5.org/files/popt/">popt</a> command line parsing library</li>
 <li><a href="https://www.stack.nl/~dimitri/doxygen">Doxygen</a> - optional, to build docs</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md51"></a>
+<h1><a class="anchor" id="autotoc_md53"></a>
 Building</h1>
 <p>Generate the Makefile by running </p><pre class="fragment">$ cmake .
 </pre><p>After building you can install <code>rdiff</code> and <code>librsync</code> for system-wide use. </p><pre class="fragment">$ make
@@ -75,18 +75,18 @@ Building</h1>
 <p>If you are using GNU libc, you might like to use </p><pre class="fragment">MALLOC_CHECK_=2 ./rdiff
 </pre><p>to detect some allocation bugs.</p>
 <p>librsync has annotations for the SPLINT static checking tool.</p>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md54"></a>
 Build options</h1>
 <p>The build is customizable by using CMake options in the configure step: </p><pre class="fragment">$ cmake -D &lt;option-name&gt;=&lt;value&gt; .
 </pre><p>If you are interested in building only the <code>librsync</code> target, you can skip the <code>rdiff</code> build. In this way you don't need its dependencies (e.g. <code>popt</code>). To do that, set the <code>BUILD_RDIFF</code> option to <code>OFF</code>: </p><pre class="fragment">$ cmake -D BUILD_RDIFF=OFF .
 </pre><p>Be aware that many tests depend on <code>rdiff</code> executable, so when it is disabled, also those tests are.</p>
 <p>Compression support is under development (see <a href="https://github.com/librsync/librsync/issues/8">#8</a>). It is so disabled by default. You can turn it on by using <code>ENABLE_COMPRESSION</code> option: </p><pre class="fragment">$ cmake -D ENABLE_COMPRESSION=ON .
 </pre><p>To build code for debug trace messages: </p><pre class="fragment">$ cmake -D ENABLE_TRACE=ON .
-</pre><h1><a class="anchor" id="autotoc_md53"></a>
+</pre><h1><a class="anchor" id="autotoc_md55"></a>
 Ninja builds</h1>
 <p>CMake generates input files for an underlying build tool that will actually do the build. Typically this is Make, but others are supported. In particular <a href="http://build-ninja.org">Ninja</a> is a nice alternative. To use it: </p><pre class="fragment">$ cmake -G Ninja .
 $ ninja check
-</pre><h1><a class="anchor" id="autotoc_md54"></a>
+</pre><h1><a class="anchor" id="autotoc_md56"></a>
 Cygwin</h1>
 <p>With Cygwin you can build using gcc as under a normal unix system. It is also possible to compile under Cygwin using MSVC++. You must have environment variables needed by MSVC set using the Vcvars32.bat script. </p>
 </div></div><!-- contents -->
@@ -114,7 +114,7 @@ Cygwin</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

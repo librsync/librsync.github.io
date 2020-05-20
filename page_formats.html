@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -54,41 +54,26 @@ $(function() {
 <div class="title">File formats </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md46"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md48"></a>
 Generalities</h1>
 <p>There are two file formats used by <code>librsync</code> and <code>rdiff</code>: the <em>signature</em> file, which summarizes a data file, and the <em>delta</em> file, which describes the edits from one data file to another.</p>
 <p>librsync does not know or care about any formats in the data files.</p>
 <p>All integers are big-endian.</p>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 Magic numbers</h1>
-<p>All librsync files start with a <code>uint32</code> magic number identifying them. These are declared in <code><a class="el" href="librsync_8h.html">librsync.h</a></code>:</p>
-<div class="fragment"><div class="line">/** A delta file. At present, there&#39;s only one delta format. **/</div>
-<div class="line">RS_DELTA_MAGIC          = 0x72730236,      /* r s \2 6 */</div>
-<div class="line"> </div>
-<div class="line">/**</div>
-<div class="line"> * A signature file with MD4 signatures.  Backward compatible with</div>
-<div class="line"> * librsync &lt; 1.0, but strongly deprecated because it creates a security</div>
-<div class="line"> * vulnerability on files containing partly untrusted data. See</div>
-<div class="line"> * &lt;https://github.com/librsync/librsync/issues/5&gt;.</div>
-<div class="line"> **/</div>
-<div class="line">RS_MD4_SIG_MAGIC        = 0x72730136,      /* r s \1 6 */</div>
-<div class="line"> </div>
-<div class="line">/**</div>
-<div class="line"> * A signature file using the BLAKE2 hash. Supported from librsync 1.0.</div>
-<div class="line"> **/</div>
-<div class="line">RS_BLAKE2_SIG_MAGIC     = 0x72730137       /* r s \1 7 */</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md48"></a>
+<p>All librsync files start with a u32 <a class="el" href="librsync_8h.html#ab6abafd1db0a3947bb3c076507f4f7c2">rs_magic_number</a> identifying them. These are declared in <code><a class="el" href="librsync_8h.html">librsync.h</a></code>, and there are different numbers for every different signature and delta file type. Note magic numbers for newer file types are not supported by older versions of librsync. Older librsync versions will immediately fail with an error when they encounter file types they don't support.</p>
+<h1><a class="anchor" id="autotoc_md50"></a>
 Signatures</h1>
-<p>Signatures consist of a header followed by a number of block signatures.</p>
-<p>Each block signature gives signature hashes for one block of <code>block_len</code> bytes from the input data file. The final data block may be shorter. The number of blocks in the signature is therefore </p><pre class="fragment">ceil(input_len/block_len)
-</pre><p>The signature header is (see <code>rs_sig_s_header</code>): </p><pre class="fragment">u32 magic;     // either RS_MD4_SIG_MAGIC or RS_BLAKE2_SIG_MAGIC
-u32 block_len; // bytes per block
-u32 strong_sum_len;  // bytes per strong sum in each block
-</pre><p>The block signature contains a rolling or weak checksum used to find moved data, and a strong hash used to check the match is correct. The weak checksum is computed as in <code><a class="el" href="rollsum_8c_source.html">rollsum.c</a></code>. The strong hash is either MD4 or BLAKE2 depending on the magic number.</p>
-<p>To make the signatures smaller at a cost of a greater chance of collisions, the <code>strong_sum_len</code> in the header can cause the strong sum to be truncated to the left after computation.</p>
+<p>Signatures consist of a header followed by a number of block signatures for each block in the data file.</p>
+<p>The signature header is: </p><pre class="fragment">u32 magic;     // Some RS_*_SIG_MAGIC value.
+u32 block_len; // Bytes per block.
+u32 strong_sum_len;  // Bytes per strong sum in each block.
+</pre><p>Each block signature includes a weaksum followed by a truncated strongsum hash for one block of <code>block_len</code> bytes from the input data file. The strongsum signature will be truncated to the <code>strong_sum_len</code> in the header. The final data block may be shorter. The number of blocks in the signature is therefore </p><pre class="fragment">ceil(input_len/block_len)
+</pre><p>The block signature weak checksum is used as a rolling checksum to find moved data, and a strong hash used to check the match is correct. The weak checksum is either a rollsum (based on adler32) or (better alternative) rabinkarp, and the strong hash is either MD4 or BLAKE2 depending on the magic number.</p>
+<p>Truncating the strongsum makes the signatures smaller at a cost of a greater chance of collisions. The strongsums are truncated by keeping the left most (first) bytes after computation.</p>
 <p>Each signature block format is (see <code>rs_sig_do_block</code>): </p><pre class="fragment">u32 weak_sum;
 u8[strong_sum_len] strong_sum;
-</pre><h1><a class="anchor" id="autotoc_md49"></a>
+</pre><h1><a class="anchor" id="autotoc_md51"></a>
 Delta files</h1>
 <p>Deltas consist of the delta magic constant <code>RS_DELTA_MAGIC</code> followed by a series of commands. Commands tell the patch logic how to construct the result file (new version) from the basis file (old version).</p>
 <p>There are three kinds of commands: the literal command, the copy command, and the end command. A command consists of a single byte followed by zero or more arguments. The number and size of the arguments are defined in <code><a class="el" href="prototab_8c.html">prototab.c</a></code>.</p>
@@ -124,7 +109,7 @@ u8[arg2_len] length; // number of bytes to copy from the basis
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

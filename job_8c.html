@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -93,7 +93,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rs_job_input_is_ending
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Generic state-machine interface.</p>
 <p>The point of this is that we need to be able to suspend and resume processing at any point at which the buffers may block.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming jobs</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming API</a> </dd>
 <dd>
 <a class="el" href="job_8c.html#a637e42431bf4df09af378c5a1efa60f0" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> </dd>
 <dd>
@@ -159,7 +159,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rs_job_input_is_ending
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253" title="Return codes from nonblocking rsync operations.">rs_result</a> that caused iteration to stop.</dd></dl>
 <p><code>buffers-&gt;eof_in</code> should be true if there is no more data after what's in the input buffer. The final block checksum will run across whatever's in there, without trying to accumulate anything else.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming jobs</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="api_streaming.html">Streaming API</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="job_8c_source.html#l00093">93</a> of file <a class="el" href="job_8c_source.html">job.c</a>.</p>
 
@@ -267,7 +267,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>rs_job_input_is_ending
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:01 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>

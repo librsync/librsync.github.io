@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.0</span>
+   &#160;<span id="projectnumber">2.3.1</span>
    </div>
   </td>
  </tr>
@@ -68,6 +68,12 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a849d7b9cab945feabe177cd5e61f46a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#a849d7b9cab945feabe177cd5e61f46a7">count</a></td></tr>
 <tr class="memdesc:a849d7b9cab945feabe177cd5e61f46a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of entries in hashtable.  <a href="structhashtable.html#a849d7b9cab945feabe177cd5e61f46a7">More...</a><br /></td></tr>
 <tr class="separator:a849d7b9cab945feabe177cd5e61f46a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab89d13f1e21e46e4790780095e1f14a0"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#ab89d13f1e21e46e4790780095e1f14a0">tmask</a></td></tr>
+<tr class="memdesc:ab89d13f1e21e46e4790780095e1f14a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask to get the hashtable index.  <a href="structhashtable.html#ab89d13f1e21e46e4790780095e1f14a0">More...</a><br /></td></tr>
+<tr class="separator:ab89d13f1e21e46e4790780095e1f14a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6082e065c17d152a5e00150edc9b40"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#afe6082e065c17d152a5e00150edc9b40">bshift</a></td></tr>
+<tr class="memdesc:afe6082e065c17d152a5e00150edc9b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shift to get the bloomfilter index.  <a href="structhashtable.html#afe6082e065c17d152a5e00150edc9b40">More...</a><br /></td></tr>
+<tr class="separator:afe6082e065c17d152a5e00150edc9b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d26a02a9bc656f5acab82ee1f45c82e"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#a2d26a02a9bc656f5acab82ee1f45c82e">find_count</a></td></tr>
 <tr class="memdesc:a2d26a02a9bc656f5acab82ee1f45c82e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of finds tried.  <a href="structhashtable.html#a2d26a02a9bc656f5acab82ee1f45c82e">More...</a><br /></td></tr>
 <tr class="separator:a2d26a02a9bc656f5acab82ee1f45c82e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -80,6 +86,9 @@ Data Fields</h2></td></tr>
 <tr class="memitem:aa5ee8c97823281612f138de984dd46f3"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#aa5ee8c97823281612f138de984dd46f3">entrycmp_count</a></td></tr>
 <tr class="memdesc:aa5ee8c97823281612f138de984dd46f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of entry compares done.  <a href="structhashtable.html#aa5ee8c97823281612f138de984dd46f3">More...</a><br /></td></tr>
 <tr class="separator:aa5ee8c97823281612f138de984dd46f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4b5d6817ee43aae5cc08bff4c0b6b75"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#aa4b5d6817ee43aae5cc08bff4c0b6b75">kbloom</a></td></tr>
+<tr class="memdesc:aa4b5d6817ee43aae5cc08bff4c0b6b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloom filter of hash keys with k=1.  <a href="structhashtable.html#aa4b5d6817ee43aae5cc08bff4c0b6b75">More...</a><br /></td></tr>
+<tr class="separator:aa4b5d6817ee43aae5cc08bff4c0b6b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac624838d2888397a8374fb2aabd330fe"><td class="memItemLeft" align="right" valign="top">void **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhashtable.html#ac624838d2888397a8374fb2aabd330fe">etable</a></td></tr>
 <tr class="memdesc:ac624838d2888397a8374fb2aabd330fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table of pointers to entries.  <a href="structhashtable.html#ac624838d2888397a8374fb2aabd330fe">More...</a><br /></td></tr>
 <tr class="separator:ac624838d2888397a8374fb2aabd330fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,7 +99,7 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The hashtable type. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00128">128</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00130">130</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="ab62bd10297b090cfce7d728fd650e51d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab62bd10297b090cfce7d728fd650e51d">&#9670;&nbsp;</a></span>size</h2>
@@ -106,7 +115,7 @@ Data Fields</h2></td></tr>
 
 <p>Size of allocated hashtable. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00129">129</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00131">131</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -124,7 +133,43 @@ Data Fields</h2></td></tr>
 
 <p>Number of entries in hashtable. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00130">130</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00132">132</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+
+</div>
+</div>
+<a id="ab89d13f1e21e46e4790780095e1f14a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab89d13f1e21e46e4790780095e1f14a0">&#9670;&nbsp;</a></span>tmask</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned hashtable::tmask</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mask to get the hashtable index. </p>
+
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00133">133</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+
+</div>
+</div>
+<a id="afe6082e065c17d152a5e00150edc9b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6082e065c17d152a5e00150edc9b40">&#9670;&nbsp;</a></span>bshift</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned hashtable::bshift</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Shift to get the bloomfilter index. </p>
+
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00135">135</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -142,7 +187,7 @@ Data Fields</h2></td></tr>
 
 <p>The count of finds tried. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00133">133</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00139">139</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -160,7 +205,7 @@ Data Fields</h2></td></tr>
 
 <p>The count of matches found. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00134">134</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00140">140</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -178,7 +223,7 @@ Data Fields</h2></td></tr>
 
 <p>The count of hash compares done. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00135">135</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00141">141</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -196,7 +241,25 @@ Data Fields</h2></td></tr>
 
 <p>The count of entry compares done. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00136">136</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00142">142</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+
+</div>
+</div>
+<a id="aa4b5d6817ee43aae5cc08bff4c0b6b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4b5d6817ee43aae5cc08bff4c0b6b75">&#9670;&nbsp;</a></span>kbloom</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char* hashtable::kbloom</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bloom filter of hash keys with k=1. </p>
+
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00145">145</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -214,7 +277,7 @@ Data Fields</h2></td></tr>
 
 <p>Table of pointers to entries. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00138">138</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00147">147</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -232,7 +295,7 @@ Data Fields</h2></td></tr>
 
 <p>Table of hash keys. </p>
 
-<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00139">139</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hashtable_8h_source.html#l00148">148</a> of file <a class="el" href="hashtable_8h_source.html">hashtable.h</a>.</p>
 
 </div>
 </div>
@@ -263,7 +326,7 @@ Data Fields</h2></td></tr>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 12 2020 15:46:02 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 20 2020 11:57:31 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.16
 </small></address>
