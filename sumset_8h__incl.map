@@ -1,0 +1,15 @@
+<map id="sumset.h" name="sumset.h">
+<area shape="rect" id="node1" title="The rs_signature class implementation of a file signature." alt="" coords="183,5,265,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="237,229,312,256"/>
+<area shape="rect" id="node4" href="$hashtable_8h.html" title="A generic open addressing hashtable." alt="" coords="88,155,187,181"/>
+<area shape="rect" id="node6" href="$checksum_8h.html" title="Abstract wrappers around different weaksum and strongsum implementations." alt="" coords="262,80,362,107"/>
+<area shape="rect" id="node7" href="$librsync_8h.html" title="Public header for librsync." alt="" coords="539,155,624,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="104,229,187,256"/>
+<area shape="rect" id="node12" href="$rollsum_8h.html" title="The Rollsum class implementation of the original rsync rollsum." alt="" coords="312,155,395,181"/>
+<area shape="rect" id="node13" href="$rabinkarp_8h.html" title="The rabinkarp class implementation of the RabinKarp rollsum." alt="" coords="419,155,515,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="492,229,559,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="397,229,467,256"/>
+<area shape="rect" id="node10" title=" " alt="" coords="583,229,647,256"/>
+<area shape="rect" id="node11" href="$librsync__export_8h_source.html" title=" " alt="" coords="671,229,806,256"/>
+</map>

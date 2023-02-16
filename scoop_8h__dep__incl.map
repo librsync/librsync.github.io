@@ -1,0 +1,11 @@
+<map id="scoop.h" name="scoop.h">
+<area shape="rect" id="node1" title="Manage librsync streams of IO." alt="" coords="327,5,399,32"/>
+<area shape="rect" id="node2" href="$delta_8c.html" title="Generate in streaming mode an rsync delta given a set of signatures, and a new file." alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" href="$job_8c_source.html" title=" " alt="" coords="96,80,149,107"/>
+<area shape="rect" id="node4" href="$mksum_8c.html" title="Generate file signatures." alt="" coords="173,80,256,107"/>
+<area shape="rect" id="node5" href="$netint_8c_source.html" title=" " alt="" coords="281,80,351,107"/>
+<area shape="rect" id="node6" href="$patch_8c.html" title="Apply a delta to an old file to generate a new file." alt="" coords="376,80,445,107"/>
+<area shape="rect" id="node7" href="$readsums_8c.html" title="Load signatures from a file." alt="" coords="470,80,567,107"/>
+<area shape="rect" id="node8" href="$scoop_8c.html" title="This file deals with readahead from caller&#45;supplied buffers." alt="" coords="591,80,662,107"/>
+<area shape="rect" id="node9" href="$tube_8c.html" title="A somewhat elastic but fairly small buffer for data passing through a stream." alt="" coords="686,80,749,107"/>
+</map>

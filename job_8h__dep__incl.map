@@ -1,0 +1,15 @@
+<map id="job.h" name="job.h">
+<area shape="rect" id="node1" title="Generic state&#45;machine interface." alt="" coords="361,5,415,32"/>
+<area shape="rect" id="node2" href="$buf_8c_source.html" title=" " alt="" coords="72,80,125,107"/>
+<area shape="rect" id="node3" href="$delta_8c.html" title="Generate in streaming mode an rsync delta given a set of signatures, and a new file." alt="" coords="5,155,72,181"/>
+<area shape="rect" id="node4" href="$emit_8c_source.html" title=" " alt="" coords="601,80,663,107"/>
+<area shape="rect" id="node5" href="$job_8c_source.html" title=" " alt="" coords="96,155,149,181"/>
+<area shape="rect" id="node6" href="$mksum_8c.html" title="Generate file signatures." alt="" coords="173,155,256,181"/>
+<area shape="rect" id="node7" href="$patch_8c.html" title="Apply a delta to an old file to generate a new file." alt="" coords="280,155,349,181"/>
+<area shape="rect" id="node8" href="$readsums_8c.html" title="Load signatures from a file." alt="" coords="469,155,566,181"/>
+<area shape="rect" id="node9" href="$scoop_8c.html" title="This file deals with readahead from caller&#45;supplied buffers." alt="" coords="590,155,661,181"/>
+<area shape="rect" id="node10" href="$scoop_8h.html" title="Manage librsync streams of IO." alt="" coords="352,80,424,107"/>
+<area shape="rect" id="node12" href="$tube_8c.html" title="A somewhat elastic but fairly small buffer for data passing through a stream." alt="" coords="685,155,747,181"/>
+<area shape="rect" id="node13" href="$whole_8c_source.html" title=" " alt="" coords="688,80,760,107"/>
+<area shape="rect" id="node11" href="$netint_8c_source.html" title=" " alt="" coords="374,155,445,181"/>
+</map>

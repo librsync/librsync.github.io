@@ -1,0 +1,8 @@
+<map id="sumset.h" name="sumset.h">
+<area shape="rect" id="node1" title="The rs_signature class implementation of a file signature." alt="" coords="211,5,293,32"/>
+<area shape="rect" id="node2" href="$delta_8c.html" title="Generate in streaming mode an rsync delta given a set of signatures, and a new file." alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" href="$mksum_8c.html" title="Generate file signatures." alt="" coords="96,80,179,107"/>
+<area shape="rect" id="node4" href="$readsums_8c.html" title="Load signatures from a file." alt="" coords="203,80,301,107"/>
+<area shape="rect" id="node5" href="$sumset_8c_source.html" title=" " alt="" coords="325,80,406,107"/>
+<area shape="rect" id="node6" href="$whole_8c_source.html" title=" " alt="" coords="431,80,503,107"/>
+</map>

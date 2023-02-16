@@ -1,0 +1,5 @@
+<map id="weaksum" name="weaksum">
+<area shape="rect" id="node1" title="Abstract wrapper around weaksum implementations." alt="" coords="52,95,137,121"/>
+<area shape="rect" id="node2" href="$structRollsum.html" title="The Rollsum state type." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node3" href="$structrabinkarp.html" title="The rabinkarp_t state type." alt="" coords="105,5,189,32"/>
+</map>

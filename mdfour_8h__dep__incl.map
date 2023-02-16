@@ -1,0 +1,17 @@
+<map id="mdfour.h" name="mdfour.h">
+<area shape="rect" id="node1" title="MD4 message digest algorithm." alt="" coords="393,5,474,32"/>
+<area shape="rect" id="node2" href="$job_8h.html" title="Generic state&#45;machine interface." alt="" coords="361,80,415,107"/>
+<area shape="rect" id="node15" href="$mdfour_8c_source.html" title=" " alt="" coords="440,80,520,107"/>
+<area shape="rect" id="node3" href="$buf_8c_source.html" title=" " alt="" coords="72,155,125,181"/>
+<area shape="rect" id="node4" href="$delta_8c.html" title="Generate in streaming mode an rsync delta given a set of signatures, and a new file." alt="" coords="5,229,72,256"/>
+<area shape="rect" id="node5" href="$emit_8c_source.html" title=" " alt="" coords="601,155,663,181"/>
+<area shape="rect" id="node6" href="$job_8c_source.html" title=" " alt="" coords="96,229,149,256"/>
+<area shape="rect" id="node7" href="$mksum_8c.html" title="Generate file signatures." alt="" coords="173,229,256,256"/>
+<area shape="rect" id="node8" href="$patch_8c.html" title="Apply a delta to an old file to generate a new file." alt="" coords="280,229,349,256"/>
+<area shape="rect" id="node9" href="$readsums_8c.html" title="Load signatures from a file." alt="" coords="469,229,566,256"/>
+<area shape="rect" id="node10" href="$scoop_8c.html" title="This file deals with readahead from caller&#45;supplied buffers." alt="" coords="590,229,661,256"/>
+<area shape="rect" id="node11" href="$scoop_8h.html" title="Manage librsync streams of IO." alt="" coords="352,155,424,181"/>
+<area shape="rect" id="node13" href="$tube_8c.html" title="A somewhat elastic but fairly small buffer for data passing through a stream." alt="" coords="685,229,747,256"/>
+<area shape="rect" id="node14" href="$whole_8c_source.html" title=" " alt="" coords="688,155,760,181"/>
+<area shape="rect" id="node12" href="$netint_8c_source.html" title=" " alt="" coords="374,229,445,256"/>
+</map>

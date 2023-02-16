@@ -1,0 +1,6 @@
+<map id="prototab.h" name="prototab.h">
+<area shape="rect" id="node1" title="Delta file commands." alt="" coords="83,5,172,32"/>
+<area shape="rect" id="node2" href="$emit_8c_source.html" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" href="$patch_8c.html" title="Apply a delta to an old file to generate a new file." alt="" coords="93,80,162,107"/>
+<area shape="rect" id="node4" href="$prototab_8c_source.html" title=" " alt="" coords="186,80,274,107"/>
+</map>

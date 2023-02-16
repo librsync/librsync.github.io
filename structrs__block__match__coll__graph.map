@@ -1,0 +1,6 @@
+<map id="rs_block_match" name="rs_block_match">
+<area shape="rect" id="node1" title=" " alt="" coords="49,184,173,211"/>
+<area shape="rect" id="node2" href="$structrs__block__sig.html" title="Signature of a single block." alt="" coords="5,95,108,121"/>
+<area shape="rect" id="node3" href="$structrs__signature.html" title="Signature of a whole file." alt="" coords="132,95,235,121"/>
+<area shape="rect" id="node4" href="$structhashtable.html" title="The hashtable type." alt="" coords="140,5,227,32"/>
+</map>

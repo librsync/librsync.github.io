@@ -1,0 +1,8 @@
+<map id="netint.h" name="netint.h">
+<area shape="rect" id="node1" title="Network&#45;byte&#45;order output to the tube." alt="" coords="199,5,271,32"/>
+<area shape="rect" id="node2" href="$emit_8c_source.html" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" href="$mksum_8c.html" title="Generate file signatures." alt="" coords="93,80,175,107"/>
+<area shape="rect" id="node4" href="$netint_8c_source.html" title=" " alt="" coords="200,80,271,107"/>
+<area shape="rect" id="node5" href="$patch_8c.html" title="Apply a delta to an old file to generate a new file." alt="" coords="295,80,365,107"/>
+<area shape="rect" id="node6" href="$readsums_8c.html" title="Load signatures from a file." alt="" coords="389,80,487,107"/>
+</map>

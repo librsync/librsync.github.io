@@ -1,0 +1,12 @@
+<map id="rs_job" name="rs_job">
+<area shape="rect" id="node1" title="The contents of this structure are private." alt="" coords="347,184,408,211"/>
+<area shape="rect" id="node2" href="$structrs__buffers__s.html" title="Description of input and output buffers." alt="" coords="5,95,107,121"/>
+<area shape="rect" id="node3" href="$structrs__signature.html" title="Signature of a whole file." alt="" coords="131,95,234,121"/>
+<area shape="rect" id="node4" href="$structhashtable.html" title="The hashtable type." alt="" coords="139,5,226,32"/>
+<area shape="rect" id="node5" href="$structweaksum.html" title="Abstract wrapper around weaksum implementations." alt="" coords="259,95,344,121"/>
+<area shape="rect" id="node6" href="$structRollsum.html" title="The Rollsum state type." alt="" coords="257,5,332,32"/>
+<area shape="rect" id="node7" href="$structrabinkarp.html" title="The rabinkarp_t state type." alt="" coords="357,5,441,32"/>
+<area shape="rect" id="node8" href="$structrs__prototab__ent.html" title=" " alt="" coords="369,95,493,121"/>
+<area shape="rect" id="node9" href="$structrs__mdfour.html" title="The rs_mdfour state type." alt="" coords="517,95,605,121"/>
+<area shape="rect" id="node10" href="$structrs__stats.html" title="Performance statistics from a librsync encoding or decoding operation." alt="" coords="634,95,707,121"/>
+</map>
