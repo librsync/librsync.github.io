@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -69,12 +69,14 @@ $(function() {
 <div class="textblock"><div class="dynheader">
 Include dependency graph for checksum.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="checksum_8h__incl.svg" width="768" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="checksum_8h__incl.svg" width="768" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="checksum_8h__dep__incl.svg" width="991" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="checksum_8h__dep__incl.svg" width="991" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="checksum_8h_source.html">Go to the source code of this file.</a></p>
@@ -512,7 +514,7 @@ Functions</h2></td></tr>
 <p >Note this does not apply <a class="el" href="hashtable_8h.html#ac1bb2e17d20ca0fc08ab9e02ecaa698f" title="MurmurHash3 finalization mix function.">mix32()</a> to rollsum digests, unlike weaksum_digest(). This is because rollsums are stored raw without <a class="el" href="hashtable_8h.html#ac1bb2e17d20ca0fc08ab9e02ecaa698f" title="MurmurHash3 finalization mix function.">mix32()</a> applied for backwards-compatibility, but we apply <a class="el" href="hashtable_8h.html#ac1bb2e17d20ca0fc08ab9e02ecaa698f" title="MurmurHash3 finalization mix function.">mix32()</a> when adding them into a signature and when getting the digest for calculating deltas.</p>
 <p >Calculate a weaksum. </p>
 
-<p class="definition">Definition at line <a class="el" href="checksum_8c_source.html#l00033">33</a> of file <a class="el" href="checksum_8c_source.html">checksum.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="checksum_8c_source.html#l00034">34</a> of file <a class="el" href="checksum_8c_source.html">checksum.c</a>.</p>
 
 </div>
 </div>
@@ -559,7 +561,7 @@ Functions</h2></td></tr>
 <p >In plain rsync, the checksum is perturbed by a seed value. This is used when retrying a failed transmission: we've discovered that the hashes collided at some point, so we're going to try again with different hashes to see if we can get it right. (Check tridge's thesis for details and to see if that's correct.)</p>
 <p >Since we can't retry I'm not sure if it's very useful for librsync, except perhaps as protection against hash collision attacks. </p>
 
-<p class="definition">Definition at line <a class="el" href="checksum_8c_source.html#l00058">58</a> of file <a class="el" href="checksum_8c_source.html">checksum.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="checksum_8c_source.html#l00059">59</a> of file <a class="el" href="checksum_8c_source.html">checksum.c</a>.</p>
 
 </div>
 </div>
@@ -587,7 +589,7 @@ Functions</h2></td></tr>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:50 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

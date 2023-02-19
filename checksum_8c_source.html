@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -81,57 +81,58 @@ $(function() {
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="checksum_8h.html">checksum.h</a>&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;blake2.h&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;librsync_export.h&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>LIBRSYNC_EXPORT <span class="keyword">const</span> <span class="keywordtype">int</span> RS_MD4_SUM_LENGTH = 16;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>LIBRSYNC_EXPORT <span class="keyword">const</span> <span class="keywordtype">int</span> RS_BLAKE2_SUM_LENGTH = 32;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"></span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/** A simple 32bit checksum that can be incrementally updated. */</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="checksum_8h.html#a25c2d070f333e27ee30831f05bc77c65">   33</a></span>rs_weak_sum_t <a class="code hl_function" href="checksum_8h.html#a25c2d070f333e27ee30831f05bc77c65">rs_calc_weak_sum</a>(<a class="code hl_enumeration" href="checksum_8h.html#a523b170a7d10ae0b00117c2761abaf8d">weaksum_kind_t</a> kind, <span class="keywordtype">void</span> <span class="keyword">const</span> *buf, <span class="keywordtype">size_t</span> len)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (kind == RS_ROLLSUM) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_struct" href="structRollsum.html">Rollsum</a> sum;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        RollsumInit(&amp;sum);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        RollsumUpdate(&amp;sum, buf, len);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> RollsumDigest(&amp;sum);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_struct" href="structrabinkarp.html">rabinkarp_t</a> sum;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        rabinkarp_init(&amp;sum);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        rabinkarp_update(&amp;sum, buf, len);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">return</span> rabinkarp_digest(&amp;sum);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"></span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/** Calculate and store into SUM a strong checksum.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> * In plain rsync, the checksum is perturbed by a seed value. This is used when</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * retrying a failed transmission: we&#39;ve discovered that the hashes collided at</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * some point, so we&#39;re going to try again with different hashes to see if we</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * can get it right. (Check tridge&#39;s thesis for details and to see if that&#39;s</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * correct.)</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * Since we can&#39;t retry I&#39;m not sure if it&#39;s very useful for librsync, except</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * perhaps as protection against hash collision attacks. */</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="checksum_8h.html#aca0ef7069e47972313f74f66d9c29298">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="checksum_8h.html#aca0ef7069e47972313f74f66d9c29298">rs_calc_strong_sum</a>(<a class="code hl_enumeration" href="checksum_8h.html#a358cb59b26ba2585bc2094b4da2a547d">strongsum_kind_t</a> kind, <span class="keywordtype">void</span> <span class="keyword">const</span> *buf, <span class="keywordtype">size_t</span> len,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                        rs_strong_sum_t *sum)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (kind == RS_MD4) {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_struct" href="structrs__mdfour.html">rs_mdfour</a>((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)sum, buf, len);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        blake2b_state ctx;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        blake2b_init(&amp;ctx, RS_MAX_STRONG_SUM_LENGTH);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        blake2b_update(&amp;ctx, (<span class="keyword">const</span> uint8_t *)buf, len);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        blake2b_final(&amp;ctx, (uint8_t *)sum, RS_MAX_STRONG_SUM_LENGTH);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;config.h&quot;</span>             <span class="comment">/* IWYU pragma: keep */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="checksum_8h.html">checksum.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;blake2.h&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;librsync_export.h&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>LIBRSYNC_EXPORT <span class="keyword">const</span> <span class="keywordtype">int</span> RS_MD4_SUM_LENGTH = 16;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>LIBRSYNC_EXPORT <span class="keyword">const</span> <span class="keywordtype">int</span> RS_BLAKE2_SUM_LENGTH = 32;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"></span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/** A simple 32bit checksum that can be incrementally updated. */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="checksum_8h.html#a25c2d070f333e27ee30831f05bc77c65">   34</a></span>rs_weak_sum_t <a class="code hl_function" href="checksum_8h.html#a25c2d070f333e27ee30831f05bc77c65">rs_calc_weak_sum</a>(<a class="code hl_enumeration" href="checksum_8h.html#a523b170a7d10ae0b00117c2761abaf8d">weaksum_kind_t</a> kind, <span class="keywordtype">void</span> <span class="keyword">const</span> *buf, <span class="keywordtype">size_t</span> len)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">if</span> (kind == RS_ROLLSUM) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_struct" href="structRollsum.html">Rollsum</a> sum;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        RollsumInit(&amp;sum);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        RollsumUpdate(&amp;sum, buf, len);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span> RollsumDigest(&amp;sum);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_struct" href="structrabinkarp.html">rabinkarp_t</a> sum;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        rabinkarp_init(&amp;sum);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        rabinkarp_update(&amp;sum, buf, len);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">return</span> rabinkarp_digest(&amp;sum);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">/** Calculate and store into SUM a strong checksum.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * In plain rsync, the checksum is perturbed by a seed value. This is used when</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * retrying a failed transmission: we&#39;ve discovered that the hashes collided at</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * some point, so we&#39;re going to try again with different hashes to see if we</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * can get it right. (Check tridge&#39;s thesis for details and to see if that&#39;s</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * correct.)</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * Since we can&#39;t retry I&#39;m not sure if it&#39;s very useful for librsync, except</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"> * perhaps as protection against hash collision attacks. */</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="checksum_8h.html#aca0ef7069e47972313f74f66d9c29298">   59</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="checksum_8h.html#aca0ef7069e47972313f74f66d9c29298">rs_calc_strong_sum</a>(<a class="code hl_enumeration" href="checksum_8h.html#a358cb59b26ba2585bc2094b4da2a547d">strongsum_kind_t</a> kind, <span class="keywordtype">void</span> <span class="keyword">const</span> *buf, <span class="keywordtype">size_t</span> len,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                        rs_strong_sum_t *sum)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (kind == RS_MD4) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_struct" href="structrs__mdfour.html">rs_mdfour</a>((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)sum, buf, len);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        blake2b_state ctx;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        blake2b_init(&amp;ctx, RS_MAX_STRONG_SUM_LENGTH);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        blake2b_update(&amp;ctx, (<span class="keyword">const</span> uint8_t *)buf, len);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        blake2b_final(&amp;ctx, (uint8_t *)sum, RS_MAX_STRONG_SUM_LENGTH);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
 <div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="checksum_8h.html">checksum.h</a></div><div class="ttdoc">Abstract wrappers around different weaksum and strongsum implementations.</div></div>
-<div class="ttc" id="achecksum_8h_html_a25c2d070f333e27ee30831f05bc77c65"><div class="ttname"><a href="checksum_8h.html#a25c2d070f333e27ee30831f05bc77c65">rs_calc_weak_sum</a></div><div class="ttdeci">rs_weak_sum_t rs_calc_weak_sum(weaksum_kind_t kind, void const *buf, size_t len)</div><div class="ttdoc">Calculate a weaksum.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8c_source.html#l00033">checksum.c:33</a></div></div>
+<div class="ttc" id="achecksum_8h_html_a25c2d070f333e27ee30831f05bc77c65"><div class="ttname"><a href="checksum_8h.html#a25c2d070f333e27ee30831f05bc77c65">rs_calc_weak_sum</a></div><div class="ttdeci">rs_weak_sum_t rs_calc_weak_sum(weaksum_kind_t kind, void const *buf, size_t len)</div><div class="ttdoc">Calculate a weaksum.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8c_source.html#l00034">checksum.c:34</a></div></div>
 <div class="ttc" id="achecksum_8h_html_a358cb59b26ba2585bc2094b4da2a547d"><div class="ttname"><a href="checksum_8h.html#a358cb59b26ba2585bc2094b4da2a547d">strongsum_kind_t</a></div><div class="ttdeci">strongsum_kind_t</div><div class="ttdoc">Strongsum implementations.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8h_source.html#l00041">checksum.h:41</a></div></div>
 <div class="ttc" id="achecksum_8h_html_a523b170a7d10ae0b00117c2761abaf8d"><div class="ttname"><a href="checksum_8h.html#a523b170a7d10ae0b00117c2761abaf8d">weaksum_kind_t</a></div><div class="ttdeci">weaksum_kind_t</div><div class="ttdoc">Weaksum implementations.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8h_source.html#l00035">checksum.h:35</a></div></div>
-<div class="ttc" id="achecksum_8h_html_aca0ef7069e47972313f74f66d9c29298"><div class="ttname"><a href="checksum_8h.html#aca0ef7069e47972313f74f66d9c29298">rs_calc_strong_sum</a></div><div class="ttdeci">void rs_calc_strong_sum(strongsum_kind_t kind, void const *buf, size_t len, rs_strong_sum_t *sum)</div><div class="ttdoc">Calculate a strongsum.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8c_source.html#l00058">checksum.c:58</a></div></div>
+<div class="ttc" id="achecksum_8h_html_aca0ef7069e47972313f74f66d9c29298"><div class="ttname"><a href="checksum_8h.html#aca0ef7069e47972313f74f66d9c29298">rs_calc_strong_sum</a></div><div class="ttdeci">void rs_calc_strong_sum(strongsum_kind_t kind, void const *buf, size_t len, rs_strong_sum_t *sum)</div><div class="ttdoc">Calculate a strongsum.</div><div class="ttdef"><b>Definition:</b> <a href="checksum_8c_source.html#l00059">checksum.c:59</a></div></div>
 <div class="ttc" id="astructRollsum_html"><div class="ttname"><a href="structRollsum.html">Rollsum</a></div><div class="ttdoc">The Rollsum state type.</div><div class="ttdef"><b>Definition:</b> <a href="rollsum_8h_source.html#l00036">rollsum.h:36</a></div></div>
 <div class="ttc" id="astructrabinkarp_html"><div class="ttname"><a href="structrabinkarp.html">rabinkarp</a></div><div class="ttdoc">The rabinkarp_t state type.</div><div class="ttdef"><b>Definition:</b> <a href="rabinkarp_8h_source.html#l00056">rabinkarp.h:56</a></div></div>
 <div class="ttc" id="astructrs__mdfour_html"><div class="ttname"><a href="structrs__mdfour.html">rs_mdfour</a></div><div class="ttdoc">The rs_mdfour state type.</div><div class="ttdef"><b>Definition:</b> <a href="mdfour_8h_source.html#l00046">mdfour.h:46</a></div></div>
@@ -159,7 +160,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:09 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:49 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

@@ -1,23 +1,23 @@
 <map id="tube.c" name="tube.c">
-<area shape="rect" id="node1" title="A somewhat elastic but fairly small buffer for data passing through a stream." alt="" coords="581,5,643,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="44,379,119,405"/>
-<area shape="rect" id="node3" title=" " alt="" coords="409,80,479,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="503,80,574,107"/>
-<area shape="rect" id="node5" href="$librsync_8h.html" title="Public header for librsync." alt="" coords="747,304,832,331"/>
-<area shape="rect" id="node10" href="$job_8h.html" title="Generic state&#45;machine interface." alt="" coords="582,155,637,181"/>
-<area shape="rect" id="node18" href="$scoop_8h.html" title="Manage librsync streams of IO." alt="" coords="649,80,721,107"/>
-<area shape="rect" id="node19" href="$trace_8h.html" title="logging functions." alt="" coords="888,80,955,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="667,379,733,405"/>
-<area shape="rect" id="node7" title=" " alt="" coords="554,379,625,405"/>
-<area shape="rect" id="node8" title=" " alt="" coords="757,379,821,405"/>
-<area shape="rect" id="node9" href="$librsync__export_8h_source.html" title=" " alt="" coords="846,379,981,405"/>
-<area shape="rect" id="node11" title=" " alt="" coords="249,379,324,405"/>
-<area shape="rect" id="node12" href="$mdfour_8h.html" title="MD4 message digest algorithm." alt="" coords="569,229,650,256"/>
-<area shape="rect" id="node13" href="$checksum_8h.html" title="Abstract wrappers around different weaksum and strongsum implementations." alt="" coords="410,229,510,256"/>
-<area shape="rect" id="node14" href="$rollsum_8h.html" title="The Rollsum class implementation of the original rsync rollsum." alt="" coords="419,304,501,331"/>
-<area shape="rect" id="node15" href="$rabinkarp_8h.html" title="The rabinkarp class implementation of the RabinKarp rollsum." alt="" coords="525,304,621,331"/>
-<area shape="rect" id="node16" href="$hashtable_8h.html" title="A generic open addressing hashtable." alt="" coords="296,304,395,331"/>
-<area shape="rect" id="node17" title=" " alt="" coords="392,379,475,405"/>
-<area shape="rect" id="node20" title=" " alt="" coords="878,155,965,181"/>
-<area shape="rect" id="node21" href="$config_8h_source.html" title=" " alt="" coords="989,155,1064,181"/>
+<area shape="rect" id="node1" title="A somewhat elastic but fairly small buffer for data passing through a stream." alt="" coords="283,5,346,32"/>
+<area shape="rect" id="node2" href="$config_8h_source.html" title=" " alt="" coords="131,155,205,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="69,379,144,405"/>
+<area shape="rect" id="node4" title=" " alt="" coords="138,80,209,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="233,80,303,107"/>
+<area shape="rect" id="node6" href="$librsync_8h.html" title="Public header for librsync." alt="" coords="747,304,832,331"/>
+<area shape="rect" id="node11" href="$job_8h.html" title="Generic state&#45;machine interface." alt="" coords="406,155,461,181"/>
+<area shape="rect" id="node19" href="$scoop_8h.html" title="Manage librsync streams of IO." alt="" coords="469,80,541,107"/>
+<area shape="rect" id="node20" href="$trace_8h.html" title="logging functions." alt="" coords="328,80,395,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="667,379,733,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="529,379,599,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="757,379,821,405"/>
+<area shape="rect" id="node10" href="$librsync__export_8h_source.html" title=" " alt="" coords="846,379,981,405"/>
+<area shape="rect" id="node12" title=" " alt="" coords="284,379,359,405"/>
+<area shape="rect" id="node13" href="$mdfour_8h.html" title="MD4 message digest algorithm." alt="" coords="539,229,621,256"/>
+<area shape="rect" id="node14" href="$checksum_8h.html" title="Abstract wrappers around different weaksum and strongsum implementations." alt="" coords="359,229,459,256"/>
+<area shape="rect" id="node15" href="$rollsum_8h.html" title="The Rollsum class implementation of the original rsync rollsum." alt="" coords="368,304,451,331"/>
+<area shape="rect" id="node16" href="$rabinkarp_8h.html" title="The rabinkarp class implementation of the RabinKarp rollsum." alt="" coords="475,304,571,331"/>
+<area shape="rect" id="node17" href="$hashtable_8h.html" title="A generic open addressing hashtable." alt="" coords="245,304,344,331"/>
+<area shape="rect" id="node18" title=" " alt="" coords="409,379,492,405"/>
+<area shape="rect" id="node21" title=" " alt="" coords="295,155,382,181"/>
 </map>

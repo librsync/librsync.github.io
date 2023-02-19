@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -188,7 +188,7 @@ Releasing</h1>
 <li>Run <code>make all doc check</code> in a clean checkout of the release pull request branch. Also check the GitHub Actions <a href="https://github.com/librsync/librsync/actions">check and lint status</a> of the last commit on github. If it all looks good merge the release pull request on github.</li>
 <li>Draft a new release on github, typing in the release details including an overview, included changes, and known issues. The overview should give an indication of the magnitude of the changes and their impact, and the relative urgency to upgrade. The included changes should come from the NEWS.md for the release. It's probably easiest to copy and edit the previous release.</li>
 <li>After creating the release, download the <code>Source code (tar.gz)</code> release asset. Go to "Actions", find the workflow run for the "Check" corresponding to the merge of the release pull request, and download the <code>install results windows-latest Release</code> artifact renamed to <code>librsync-win64-X.Y.Z.zip</code>. Edit the release, and upload the source code and windows artifacts. This ensures that the release includes a stable tarball (See <a href="https://github.com/librsync/librsync/issues/146">https://github.com/librsync/librsync/issues/146</a> for details) and win64 install.</li>
-<li>Run <code>make doc</code> on a clean checkout of the new release tag and <code>cp -av doc/*</code> into a <code>rm -Rf *</code> emptied checkout of librsync.github.io and check it in. This ensures it includes deletes of obsolete files as well as new and updated files. Push this to update the online docs.</li>
+<li>Run <code>make doc</code> on a clean checkout of the new release tag and <code>cp -av html/*</code> into a <code>rm -Rf *</code> emptied checkout of librsync.github.io and check it in. This ensures it includes deletes of obsolete files as well as new and updated files. Push this to update the online docs.</li>
 <li>Create and merge a "Prepare vX.Y.Z+1." pull request containing updates to prepare for the changes in the next release including;<ul>
 <li>Bump the minor version in <code>CMakeLists.txt</code>.</li>
 <li>Add a <code>NOT RELEASED YET</code> version entry in <code>NEWS.md</code></li>
@@ -221,7 +221,7 @@ Releasing</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:11 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:51 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

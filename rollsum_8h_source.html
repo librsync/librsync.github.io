@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -112,7 +112,7 @@ $(function() {
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> in)</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a> += in - out;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a> += sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a> - sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a> * (out + ROLLSUM_CHAR_OFFSET);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a> += sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a> - (uint_fast16_t)sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a> * (out + ROLLSUM_CHAR_OFFSET);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> RollsumRollin(<a class="code hl_struct" href="structRollsum.html">Rollsum</a> *sum, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> in)</div>
@@ -125,7 +125,7 @@ $(function() {
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> RollsumRollout(<a class="code hl_struct" href="structRollsum.html">Rollsum</a> *sum, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> out)</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a> -= out + ROLLSUM_CHAR_OFFSET;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a> -= sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a> * (out + ROLLSUM_CHAR_OFFSET);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a> -= (uint_fast16_t)sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a> * (out + ROLLSUM_CHAR_OFFSET);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a>--;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
@@ -164,7 +164,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:50 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

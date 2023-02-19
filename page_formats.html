@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -55,15 +55,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_doc_formats"></a> </p>
-<h1><a class="anchor" id="autotoc_md55"></a>
+<h1><a class="anchor" id="autotoc_md56"></a>
 Generalities</h1>
 <p >There are two file formats used by <code>librsync</code> and <code>rdiff</code>: the <em>signature</em> file, which summarizes a data file, and the <em>delta</em> file, which describes the edits from one data file to another.</p>
 <p >librsync does not know or care about any formats in the data files.</p>
 <p >All integers are big-endian.</p>
-<h1><a class="anchor" id="autotoc_md56"></a>
+<h1><a class="anchor" id="autotoc_md57"></a>
 Magic numbers</h1>
 <p >All librsync files start with a u32 <a class="el" href="librsync_8h.html#ab6abafd1db0a3947bb3c076507f4f7c2">rs_magic_number</a> identifying them. These are declared in <code><a class="el" href="librsync_8h.html" title="Public header for librsync.">librsync.h</a></code>, and there are different numbers for every different signature and delta file type. Note magic numbers for newer file types are not supported by older versions of librsync. Older librsync versions will immediately fail with an error when they encounter file types they don't support.</p>
-<h1><a class="anchor" id="autotoc_md57"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Signatures</h1>
 <p >Signatures consist of a header followed by a number of block signatures for each block in the data file.</p>
 <p >The signature header is: </p><pre class="fragment">u32 magic;     // Some RS_*_SIG_MAGIC value.
@@ -74,7 +74,7 @@ u32 strong_sum_len;  // Bytes per strong sum in each block.
 <p >Truncating the strongsum makes the signatures smaller at a cost of a greater chance of collisions. The strongsums are truncated by keeping the left most (first) bytes after computation.</p>
 <p >Each signature block format is (see <code>rs_sig_do_block</code>): </p><pre class="fragment">u32 weak_sum;
 u8[strong_sum_len] strong_sum;
-</pre> <h1><a class="anchor" id="autotoc_md58"></a>
+</pre> <h1><a class="anchor" id="autotoc_md59"></a>
 Delta files</h1>
 <p >Deltas consist of the delta magic constant <code>RS_DELTA_MAGIC</code> followed by a series of commands. Commands tell the patch logic how to construct the result file (new version) from the basis file (old version).</p>
 <p >There are three kinds of commands: the literal command, the copy command, and the end command. A command consists of a single byte followed by zero or more arguments. The number and size of the arguments are defined in <code><a class="el" href="prototab_8c_source.html">prototab.c</a></code>.</p>
@@ -110,7 +110,7 @@ u8[arg2_len] length; // number of bytes to copy from the basis
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:11 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:51 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

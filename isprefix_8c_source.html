@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -78,21 +78,22 @@ $(function() {
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="isprefix_8h.html">isprefix.h</a>&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="isprefix_8h.html#aa43f045fa32875baa10d6db82885ae52">   23</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="isprefix_8h.html#aa43f045fa32875baa10d6db82885ae52">isprefix</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *tip, <span class="keywordtype">char</span> <span class="keyword">const</span> *iceberg)</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">while</span> (*tip) {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">if</span> (*tip != *iceberg)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        tip++;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        iceberg++;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;config.h&quot;</span>             <span class="comment">/* IWYU pragma: keep */</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="isprefix_8h.html">isprefix.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="isprefix_8h.html#aa43f045fa32875baa10d6db82885ae52">   24</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="isprefix_8h.html#aa43f045fa32875baa10d6db82885ae52">isprefix</a>(<span class="keywordtype">char</span> <span class="keyword">const</span> *tip, <span class="keywordtype">char</span> <span class="keyword">const</span> *iceberg)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">while</span> (*tip) {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">if</span> (*tip != *iceberg)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        tip++;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        iceberg++;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 <div class="ttc" id="aisprefix_8h_html"><div class="ttname"><a href="isprefix_8h.html">isprefix.h</a></div><div class="ttdoc">String prefix text function.</div></div>
-<div class="ttc" id="aisprefix_8h_html_aa43f045fa32875baa10d6db82885ae52"><div class="ttname"><a href="isprefix_8h.html#aa43f045fa32875baa10d6db82885ae52">isprefix</a></div><div class="ttdeci">int isprefix(char const *tip, char const *iceberg)</div><div class="ttdoc">Return true if TIP is a prefix of ICEBERG.</div><div class="ttdef"><b>Definition:</b> <a href="isprefix_8c_source.html#l00023">isprefix.c:23</a></div></div>
+<div class="ttc" id="aisprefix_8h_html_aa43f045fa32875baa10d6db82885ae52"><div class="ttname"><a href="isprefix_8h.html#aa43f045fa32875baa10d6db82885ae52">isprefix</a></div><div class="ttdeci">int isprefix(char const *tip, char const *iceberg)</div><div class="ttdoc">Return true if TIP is a prefix of ICEBERG.</div><div class="ttdef"><b>Definition:</b> <a href="isprefix_8c_source.html#l00024">isprefix.c:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.10-->
 <!-- start footer part -->
@@ -117,7 +118,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:49 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

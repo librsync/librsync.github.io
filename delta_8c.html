@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -67,7 +67,8 @@ $(function() {
 <div class="textblock"><div class="dynheader">
 Include dependency graph for delta.c:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="delta_8c__incl.svg" width="1276" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="delta_8c__incl.svg" width="1328" height="411"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
 </div>
 </div>
 <p><a href="delta_8c_source.html">Go to the source code of this file.</a></p>
@@ -148,7 +149,7 @@ Functions</h2></td></tr>
 
 <p>Max length of a miss is 64K including 3 command bytes. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00102">102</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00103">103</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -180,7 +181,7 @@ Functions</h2></td></tr>
 <p>Get a block of data if possible, and see if it matches. </p>
 <p >On each call, we try to process all of the input data available on the scoop and input buffer. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00121">121</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00122">122</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -208,7 +209,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00163">163</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00164">164</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -236,7 +237,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00203">203</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00204">204</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -274,7 +275,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00209">209</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00210">210</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -322,7 +323,7 @@ Functions</h2></td></tr>
 <p >Note that this will calculate weak_sum if required. It will also determine the match_len.</p>
 <p >This routine could be modified to do xdelta style matches that would extend matches past block boundaries by matching backwards and forwards beyond the block boundaries. Extending backwards would require decrementing scan_pos as appropriate. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00228">228</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00229">229</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -368,7 +369,7 @@ Functions</h2></td></tr>
 
 <p>Append a match at match_pos of length match_len to the delta, extending a previous match if possible, or flushing any previous miss/match. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00257">257</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00258">258</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -409,7 +410,7 @@ Functions</h2></td></tr>
 <p>Append a miss of length miss_len to the delta, extending a previous miss if possible, or flushing any previous match. </p>
 <p >This also breaks misses up into 32KB segments to avoid accumulating too much in memory. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00287">287</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00288">288</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -439,7 +440,7 @@ Functions</h2></td></tr>
 
 <p>Flush any accumulating hit or miss, appending it to the delta. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00301">301</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00302">302</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -471,7 +472,7 @@ Functions</h2></td></tr>
 <p >The scoop contains match data at scan_buf of length scan_pos. This function processes that match data, returning RS_DONE if it completes, or RS_BLOCKED if it gets blocked. After it completes scan_pos is reset to still point at the next unscanned data.</p>
 <p >This function currently just removes data from the scoop and adjusts scan_pos appropriately. In the future this could be used for something like context compressing of miss data. Note that it also calls rs_tube_catchup to output any pending output. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00331">331</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00332">332</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -504,7 +505,7 @@ Functions</h2></td></tr>
 <p >This function uses rs_tube_copy to queue copying from the scoop into output. and uses rs_tube_catchup to do the copying. This automaticly removes data from the scoop, but this can block. While rs_tube_catchup is blocked, scan_pos does not point at legit data, so scanning can also not proceed.</p>
 <p >In the future this could do compression of miss data before outputing it. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00354">354</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00355">355</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -534,7 +535,7 @@ Functions</h2></td></tr>
 
 <p>State function that does a slack delta containing only literal data to recreate the input. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00366">366</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00367">367</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -564,7 +565,7 @@ Functions</h2></td></tr>
 
 <p>State function for writing out the header of the encoding job. </p>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00383">383</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00384">384</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -587,7 +588,7 @@ Functions</h2></td></tr>
 <p>Prepare to compute a streaming delta. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Add a version of this that takes a <a class="el" href="librsync_8h.html#ab6abafd1db0a3947bb3c076507f4f7c2" title="A uint32 magic number, emitted in bigendian/network order at the start of librsync files.">rs_magic_number</a> controlling the delta format. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00395">395</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="delta_8c_source.html#l00396">396</a> of file <a class="el" href="delta_8c_source.html">delta.c</a>.</p>
 
 </div>
 </div>
@@ -615,7 +616,7 @@ Functions</h2></td></tr>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:50 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

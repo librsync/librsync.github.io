@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -87,95 +87,96 @@ $(function() {
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">                             |        -- Sun Microsystems</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">                             */</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="librsync_8h.html">librsync.h</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="netint_8h.html">netint.h</a>&quot;</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="scoop_8h.html">scoop.h</a>&quot;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define RS_MAX_INT_BYTES 8</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="netint_8h.html#a6fd3476e53b2a58482b411f8407c4f4f">   37</a></span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> <a class="code hl_function" href="netint_8h.html#a6fd3476e53b2a58482b411f8407c4f4f">rs_squirt_byte</a>(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_byte_t val)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_function" href="scoop_8h.html#a98f3b8fcc410948351d62728018ec67d">rs_tube_write</a>(job, &amp;val, 1);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">   43</a></span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> <a class="code hl_function" href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">rs_squirt_netint</a>(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_long_t val, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    rs_byte_t buf[RS_MAX_INT_BYTES];</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">int</span> i;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    assert(len &lt;= RS_MAX_INT_BYTES);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">/* Fill the output buffer with a bigendian representation of the number. */</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">for</span> (i = len - 1; i &gt;= 0; i--) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        buf[i] = (rs_byte_t)val;       <span class="comment">/* truncated */</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        val &gt;&gt;= 8;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="scoop_8h.html#a98f3b8fcc410948351d62728018ec67d">rs_tube_write</a>(job, buf, len);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_squirt_n4(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, <span class="keywordtype">int</span> val)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">rs_squirt_netint</a>(job, val, 4);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_suck_byte(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_byte_t *val)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> result;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    rs_byte_t *buf;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> ((result = <a class="code hl_function" href="scoop_8c.html#a9eb894edc12cd2972a1eb020bdc80725">rs_scoop_read</a>(job, 1, (<span class="keywordtype">void</span> **)&amp;buf)) == <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        *val = *buf;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_suck_netint(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_long_t *val, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> result;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    rs_byte_t *buf;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">int</span> i;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    assert(len &lt;= RS_MAX_INT_BYTES);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> ((result = <a class="code hl_function" href="scoop_8c.html#a9eb894edc12cd2972a1eb020bdc80725">rs_scoop_read</a>(job, len, (<span class="keywordtype">void</span> **)&amp;buf)) == <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>) {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        *val = 0;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">for</span> (i = 0; i &lt; len; i++)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            *val = (*val &lt;&lt; 8) | (rs_long_t)buf[i];</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_suck_n4(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, <span class="keywordtype">int</span> *val)</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> result;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    rs_long_t buf;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> ((result = rs_suck_netint(job, &amp;buf, 4)) == <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>)</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        *val = (int)buf;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">int</span> rs_int_len(rs_long_t val)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    assert(val &gt;= 0);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (!(val &amp; ~(rs_long_t)0xff))</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (!(val &amp; ~(rs_long_t)0xffff))</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span> (!(val &amp; ~(rs_long_t)0xffffffff))</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span> 4;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    assert(!(val &amp; ~(rs_long_t)0xffffffffffffffff));</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">return</span> 8;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;config.h&quot;</span>             <span class="comment">/* IWYU pragma: keep */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="librsync_8h.html">librsync.h</a>&quot;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="netint_8h.html">netint.h</a>&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="scoop_8h.html">scoop.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define RS_MAX_INT_BYTES 8</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="netint_8h.html#a6fd3476e53b2a58482b411f8407c4f4f">   38</a></span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> <a class="code hl_function" href="netint_8h.html#a6fd3476e53b2a58482b411f8407c4f4f">rs_squirt_byte</a>(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_byte_t val)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_function" href="scoop_8h.html#a98f3b8fcc410948351d62728018ec67d">rs_tube_write</a>(job, &amp;val, 1);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">   44</a></span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> <a class="code hl_function" href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">rs_squirt_netint</a>(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_long_t val, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    rs_byte_t buf[RS_MAX_INT_BYTES];</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    assert(len &lt;= RS_MAX_INT_BYTES);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">/* Fill the output buffer with a bigendian representation of the number. */</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">for</span> (i = len - 1; i &gt;= 0; i--) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        buf[i] = (rs_byte_t)val;       <span class="comment">/* truncated */</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        val &gt;&gt;= 8;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_function" href="scoop_8h.html#a98f3b8fcc410948351d62728018ec67d">rs_tube_write</a>(job, buf, len);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_squirt_n4(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, <span class="keywordtype">int</span> val)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>{</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">rs_squirt_netint</a>(job, val, 4);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_suck_byte(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_byte_t *val)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> result;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    rs_byte_t *buf;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> ((result = <a class="code hl_function" href="scoop_8c.html#a9eb894edc12cd2972a1eb020bdc80725">rs_scoop_read</a>(job, 1, (<span class="keywordtype">void</span> **)&amp;buf)) == <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        *val = *buf;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_suck_netint(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, rs_long_t *val, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> result;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    rs_byte_t *buf;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    assert(len &lt;= RS_MAX_INT_BYTES);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> ((result = <a class="code hl_function" href="scoop_8c.html#a9eb894edc12cd2972a1eb020bdc80725">rs_scoop_read</a>(job, len, (<span class="keywordtype">void</span> **)&amp;buf)) == <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        *val = 0;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">for</span> (i = 0; i &lt; len; i++)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            *val = (*val &lt;&lt; 8) | (rs_long_t)buf[i];</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> rs_suck_n4(<a class="code hl_struct" href="structrs__job.html">rs_job_t</a> *job, <span class="keywordtype">int</span> *val)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>{</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> result;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    rs_long_t buf;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">if</span> ((result = rs_suck_netint(job, &amp;buf, 4)) == <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        *val = (int)buf;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">int</span> rs_int_len(rs_long_t val)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>{</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    assert(val &gt;= 0);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (!(val &amp; ~(rs_long_t)0xff))</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (!(val &amp; ~(rs_long_t)0xffff))</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">if</span> (!(val &amp; ~(rs_long_t)0xffffffff))</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">return</span> 4;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    assert(!(val &amp; ~(rs_long_t)0xffffffffffffffff));</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> 8;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
 <div class="ttc" id="alibrsync_8h_html"><div class="ttname"><a href="librsync_8h.html">librsync.h</a></div><div class="ttdoc">Public header for librsync.</div></div>
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a></div><div class="ttdeci">rs_result</div><div class="ttdoc">Return codes from nonblocking rsync operations.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00180">librsync.h:180</a></div></div>
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a></div><div class="ttdeci">@ RS_DONE</div><div class="ttdoc">Completed successfully.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00181">librsync.h:181</a></div></div>
 <div class="ttc" id="anetint_8h_html"><div class="ttname"><a href="netint_8h.html">netint.h</a></div><div class="ttdoc">Network-byte-order output to the tube.</div></div>
-<div class="ttc" id="anetint_8h_html_a6fd3476e53b2a58482b411f8407c4f4f"><div class="ttname"><a href="netint_8h.html#a6fd3476e53b2a58482b411f8407c4f4f">rs_squirt_byte</a></div><div class="ttdeci">rs_result rs_squirt_byte(rs_job_t *job, rs_byte_t val)</div><div class="ttdoc">Write a single byte to a stream output.</div><div class="ttdef"><b>Definition:</b> <a href="netint_8c_source.html#l00037">netint.c:37</a></div></div>
-<div class="ttc" id="anetint_8h_html_aa82c804dec9ee0ab366e1c1f591012fa"><div class="ttname"><a href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">rs_squirt_netint</a></div><div class="ttdeci">rs_result rs_squirt_netint(rs_job_t *job, rs_long_t val, int len)</div><div class="ttdoc">Write a variable-length integer to a stream.</div><div class="ttdef"><b>Definition:</b> <a href="netint_8c_source.html#l00043">netint.c:43</a></div></div>
-<div class="ttc" id="ascoop_8c_html_a9eb894edc12cd2972a1eb020bdc80725"><div class="ttname"><a href="scoop_8c.html#a9eb894edc12cd2972a1eb020bdc80725">rs_scoop_read</a></div><div class="ttdeci">rs_result rs_scoop_read(rs_job_t *job, size_t len, void **ptr)</div><div class="ttdoc">Read LEN bytes if possible, and remove them from the input scoop.</div><div class="ttdef"><b>Definition:</b> <a href="scoop_8c_source.html#l00191">scoop.c:191</a></div></div>
+<div class="ttc" id="anetint_8h_html_a6fd3476e53b2a58482b411f8407c4f4f"><div class="ttname"><a href="netint_8h.html#a6fd3476e53b2a58482b411f8407c4f4f">rs_squirt_byte</a></div><div class="ttdeci">rs_result rs_squirt_byte(rs_job_t *job, rs_byte_t val)</div><div class="ttdoc">Write a single byte to a stream output.</div><div class="ttdef"><b>Definition:</b> <a href="netint_8c_source.html#l00038">netint.c:38</a></div></div>
+<div class="ttc" id="anetint_8h_html_aa82c804dec9ee0ab366e1c1f591012fa"><div class="ttname"><a href="netint_8h.html#aa82c804dec9ee0ab366e1c1f591012fa">rs_squirt_netint</a></div><div class="ttdeci">rs_result rs_squirt_netint(rs_job_t *job, rs_long_t val, int len)</div><div class="ttdoc">Write a variable-length integer to a stream.</div><div class="ttdef"><b>Definition:</b> <a href="netint_8c_source.html#l00044">netint.c:44</a></div></div>
+<div class="ttc" id="ascoop_8c_html_a9eb894edc12cd2972a1eb020bdc80725"><div class="ttname"><a href="scoop_8c.html#a9eb894edc12cd2972a1eb020bdc80725">rs_scoop_read</a></div><div class="ttdeci">rs_result rs_scoop_read(rs_job_t *job, size_t len, void **ptr)</div><div class="ttdoc">Read LEN bytes if possible, and remove them from the input scoop.</div><div class="ttdef"><b>Definition:</b> <a href="scoop_8c_source.html#l00192">scoop.c:192</a></div></div>
 <div class="ttc" id="ascoop_8h_html"><div class="ttname"><a href="scoop_8h.html">scoop.h</a></div><div class="ttdoc">Manage librsync streams of IO.</div></div>
-<div class="ttc" id="ascoop_8h_html_a98f3b8fcc410948351d62728018ec67d"><div class="ttname"><a href="scoop_8h.html#a98f3b8fcc410948351d62728018ec67d">rs_tube_write</a></div><div class="ttdeci">void rs_tube_write(rs_job_t *job, void const *buf, size_t len)</div><div class="ttdoc">Push some data into the tube for storage.</div><div class="ttdef"><b>Definition:</b> <a href="tube_8c_source.html#l00173">tube.c:173</a></div></div>
+<div class="ttc" id="ascoop_8h_html_a98f3b8fcc410948351d62728018ec67d"><div class="ttname"><a href="scoop_8h.html#a98f3b8fcc410948351d62728018ec67d">rs_tube_write</a></div><div class="ttdeci">void rs_tube_write(rs_job_t *job, void const *buf, size_t len)</div><div class="ttdoc">Push some data into the tube for storage.</div><div class="ttdef"><b>Definition:</b> <a href="tube_8c_source.html#l00174">tube.c:174</a></div></div>
 <div class="ttc" id="astructrs__job_html"><div class="ttname"><a href="structrs__job.html">rs_job</a></div><div class="ttdoc">The contents of this structure are private.</div><div class="ttdef"><b>Definition:</b> <a href="job_8h_source.html#l00047">job.h:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.10-->
@@ -201,7 +202,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:50 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

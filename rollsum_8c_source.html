@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -79,39 +79,40 @@ $(function() {
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * along with this program; if not, write to the Free Software</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="rollsum_8h.html">rollsum.h</a>&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#define DO1(buf,i)  {s1 += buf[i]; s2 += s1;}</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#define DO2(buf,i)  DO1(buf,i); DO1(buf,i+1);</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define DO4(buf,i)  DO2(buf,i); DO2(buf,i+2);</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define DO8(buf,i)  DO4(buf,i); DO4(buf,i+4);</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define DO16(buf)   DO8(buf,0); DO8(buf,8);</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">void</span> RollsumUpdate(<a class="code hl_struct" href="structRollsum.html">Rollsum</a> *sum, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">/* ANSI C says no overflow for unsigned. zlib&#39;s adler32 goes to extra</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">       effort to avoid overflow for its mod prime, which we don&#39;t have. */</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">size_t</span> n = len;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    uint_fast16_t s1 = sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    uint_fast16_t s2 = sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">while</span> (n &gt;= 16) {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        DO16(buf);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        buf += 16;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        n -= 16;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">while</span> (n != 0) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        s1 += *buf++;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        s2 += s1;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        n--;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">/* Increment s1 and s2 by the amounts added by the char offset. */</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    s1 += len * ROLLSUM_CHAR_OFFSET;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    s2 += ((len * (len + 1)) / 2) * ROLLSUM_CHAR_OFFSET;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a> += len;          <span class="comment">/* Increment sum count. */</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a> = s1;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a> = s2;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;config.h&quot;</span>             <span class="comment">/* IWYU pragma: keep */</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="rollsum_8h.html">rollsum.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#define DO1(buf,i)  {s1 += buf[i]; s2 += s1;}</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define DO2(buf,i)  DO1(buf,i); DO1(buf,i+1);</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define DO4(buf,i)  DO2(buf,i); DO2(buf,i+2);</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#define DO8(buf,i)  DO4(buf,i); DO4(buf,i+4);</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#define DO16(buf)   DO8(buf,0); DO8(buf,8);</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> RollsumUpdate(<a class="code hl_struct" href="structRollsum.html">Rollsum</a> *sum, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> len)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">/* ANSI C says no overflow for unsigned. zlib&#39;s adler32 goes to extra</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">       effort to avoid overflow for its mod prime, which we don&#39;t have. */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">size_t</span> n = len;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    uint_fast16_t s1 = sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    uint_fast16_t s2 = sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">while</span> (n &gt;= 16) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        DO16(buf);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        buf += 16;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        n -= 16;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">while</span> (n != 0) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        s1 += *buf++;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        s2 += s1;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        n--;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">/* Increment s1 and s2 by the amounts added by the char offset. */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    s1 += (uint_fast16_t)len * ROLLSUM_CHAR_OFFSET;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    s2 += (uint_fast16_t)((len * (len + 1)) / 2) * ROLLSUM_CHAR_OFFSET;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">count</a> += len;          <span class="comment">/* Increment sum count. */</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#adc2eddb8fa5be612b47ddc3b2f49a970">s1</a> = s1;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    sum-&gt;<a class="code hl_variable" href="structRollsum.html#aed8e6aaa904461e45b3c51e3e3d4cc93">s2</a> = s2;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
 <div class="ttc" id="arollsum_8h_html"><div class="ttname"><a href="rollsum_8h.html">rollsum.h</a></div><div class="ttdoc">The Rollsum class implementation of the original rsync rollsum.</div></div>
 <div class="ttc" id="astructRollsum_html"><div class="ttname"><a href="structRollsum.html">Rollsum</a></div><div class="ttdoc">The Rollsum state type.</div><div class="ttdef"><b>Definition:</b> <a href="rollsum_8h_source.html#l00036">rollsum.h:36</a></div></div>
 <div class="ttc" id="astructRollsum_html_a62efaa93a6837a9dff796c997ad988c1"><div class="ttname"><a href="structRollsum.html#a62efaa93a6837a9dff796c997ad988c1">Rollsum::count</a></div><div class="ttdeci">size_t count</div><div class="ttdoc">count of bytes included in sum</div><div class="ttdef"><b>Definition:</b> <a href="rollsum_8h_source.html#l00037">rollsum.h:37</a></div></div>
@@ -141,7 +142,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:50 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

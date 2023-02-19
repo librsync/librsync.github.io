@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -55,7 +55,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_doc_rdiff"></a> </p>
-<h1><a class="anchor" id="autotoc_md69"></a>
+<h1><a class="anchor" id="autotoc_md70"></a>
 Introduction</h1>
 <p ><em>rdiff</em> is a program to compute and apply network deltas. An <em>rdiff delta</em> is a delta between binary files, describing how a <em>basis</em> (or <em>old</em>) file can be automatically edited to produce a <em>result</em> (or <em>new</em>) file.</p>
 <p >Unlike most diff programs, librsync does not require access to both of the files when the diff is computed. Computing a delta requires just a short "signature" of the old file and the complete contents of the new file. The signature contains checksums for blocks of the old file. Using these checksums, rdiff finds matching blocks in the new file, and then computes the delta.</p>
@@ -71,7 +71,7 @@ Introduction</h1>
 <p >Unlike regular text diffs, rdiff deltas can describe sections of the input file which have been reordered or copied.</p>
 <p >Because block checksums are used to find identical sections, rdiff cannot find common sections smaller than one block, and it may not exactly identify common sections near changed sections. Changes that touch every block of the file, such as changing newlines to CRLF, are likely to cause no blocks to match at all.</p>
 <p >rdiff does not deal with file metadata or structure, such as filenames, permissions, or directories. To rdiff, a file is just a stream of bytes. Higher-level tools, such as <a href="http://rdiff-backup.stanford.edu/">rdiff-backup</a> can deal with these issues in a way appropriate to their users.</p>
-<h1><a class="anchor" id="autotoc_md70"></a>
+<h1><a class="anchor" id="autotoc_md71"></a>
 Use patterns</h1>
 <p >A typical application of the rsync algorithm is to transfer a file <em>A2</em> from a machine A to a machine B which has a similar file <em>A1</em>. This can be done as follows:</p>
 <ol type="1">
@@ -80,22 +80,22 @@ Use patterns</h1>
 <li>B applies the delta to recreate <em>A2</em>.</li>
 </ol>
 <p >In cases where <em>A1</em> and <em>A2</em> contain runs of identical bytes, rdiff should give a significant space saving.</p>
-<h1><a class="anchor" id="autotoc_md71"></a>
+<h1><a class="anchor" id="autotoc_md72"></a>
 Invoking rdiff</h1>
 <p >There are three distinct modes of operation: <em>signature</em>, <em>delta</em> and <em>patch</em>. The mode is selected by the first command argument.</p>
-<h2><a class="anchor" id="autotoc_md72"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 signature</h2>
 <blockquote class="doxtable">
 <p >&zwj;rdiff [OPTIONS] signature INPUT SIGNATURE </p>
 </blockquote>
 <p><b>rdiff signature</b> generates a signature file from an input file. The signature can later be used to generate a delta relative to the old file.</p>
-<h2><a class="anchor" id="autotoc_md73"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
 delta</h2>
 <blockquote class="doxtable">
 <p >&zwj;rdiff [OPTIONS] delta SIGNATURE NEWFILE DELTA </p>
 </blockquote>
 <p><b>rdiff delta</b> reads in a delta describing a basis file. It then calculates and writes a delta delta that transforms the basis into the new file.</p>
-<h2><a class="anchor" id="autotoc_md74"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 patch</h2>
 <blockquote class="doxtable">
 <p >&zwj;rdiff [OPTIONS] patch BASIS DELTA OUTPUT </p>
@@ -104,7 +104,7 @@ patch</h2>
 <p >rdiff cannot update files in place: the output file must not be the same as the input file.</p>
 <p >rdiff does not currently check that the delta is being applied to the correct file. If a delta is applied to the wrong basis file, the results will be garbage.</p>
 <p >The basis file must allow random access. This means it must be a regular file rather than a pipe or socket.</p>
-<h2><a class="anchor" id="autotoc_md75"></a>
+<h2><a class="anchor" id="autotoc_md76"></a>
 Global Options</h2>
 <p >These options are available for all commands.</p>
 <p ><code>--version</code> Show program version and copyright.</p>
@@ -112,16 +112,16 @@ Global Options</h2>
 <p ><code>--statistics</code> Show counts of internal operations.</p>
 <p ><code>--debug</code> Write debugging information to stderr.</p>
 <p >Options must be specified before the command name.</p>
-<h1><a class="anchor" id="autotoc_md76"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 Return Value</h1>
 <p >0: Successful completion.</p>
 <p >1: Environmental problems (file not found, invalid options, IO error, etc).</p>
 <p >2: Corrupt signature or delta file.</p>
 <p >3: Internal error or unhandled situation in librsync or rdiff.</p>
-<h1><a class="anchor" id="autotoc_md77"></a>
+<h1><a class="anchor" id="autotoc_md78"></a>
 Bugs</h1>
 <p >Unlike text patches, rdiff deltas can only be usefully applied to the exact basis file that they were generated from. rdiff does not protect against trying to apply a delta to the wrong file, though this will produce garbage output. It may be useful to store a hash of the file to which the digest is meant to be applied.</p>
-<h1><a class="anchor" id="autotoc_md78"></a>
+<h1><a class="anchor" id="autotoc_md79"></a>
 Author</h1>
 <p >rdiff was written by Martin Pool. The original rsync algorithm was discovered by Andrew Tridgell.</p>
 <p >This program is part of the <a href="http://librsync.sourcefrog.net/">librsync</a> package. </p>
@@ -150,7 +150,7 @@ Author</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:11 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:51 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

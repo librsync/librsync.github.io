@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -100,38 +100,39 @@ $(function() {
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * description of a job, including only the fields relevant to the current</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * encoding function. */</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="librsync_8h.html">librsync.h</a>&quot;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="librsync_8h.html#a53c3ba4c320a497218a86936e8ee802c">   45</a></span><span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code hl_function" href="msg_8c.html#a9e8bc3600da0ae9e3bc1897f1538123b">rs_strerror</a>(<a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> r)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">switch</span> (r) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;OK&quot;</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a5366e53561c2ec9a897470535ea0139c">RS_RUNNING</a>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;still running&quot;</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af2d289bbc65678b4b00f56a2e6632957">RS_BLOCKED</a>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;blocked waiting for input or output buffers&quot;</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ada22c2fc95695e6f9558da6bcca53749">RS_BAD_MAGIC</a>:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;bad magic number at start of stream&quot;</span>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253aa997432dc2d2c8256ad41f96267a5185">RS_INPUT_ENDED</a>:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;unexpected end of input&quot;</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a897ee702e0324d286881f6b8391ea340">RS_CORRUPT</a>:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;stream corrupt&quot;</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a639e01179ce01c707606a8e50bf5a6aa">RS_UNIMPLEMENTED</a>:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;unimplemented case&quot;</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a403296529c4ba1653612438dd7ba9a34">RS_MEM_ERROR</a>:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;out of memory&quot;</span>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af510cfd1ede72dbfea416d3f295e6c6f">RS_IO_ERROR</a>:</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;IO error&quot;</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ac562bd33fecdc9ab03d32c2471f1bdc9">RS_SYNTAX_ERROR</a>:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;bad command line syntax&quot;</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ade41976437317deebdec5b27f7b39655">RS_INTERNAL_ERROR</a>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;library internal error&quot;</span>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;unexplained problem&quot;</span>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;config.h&quot;</span>             <span class="comment">/* IWYU pragma: keep */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;<a class="code" href="librsync_8h.html">librsync.h</a>&quot;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="librsync_8h.html#a53c3ba4c320a497218a86936e8ee802c">   46</a></span><span class="keywordtype">char</span> <span class="keyword">const</span> *<a class="code hl_function" href="msg_8c.html#a9e8bc3600da0ae9e3bc1897f1538123b">rs_strerror</a>(<a class="code hl_enumeration" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a> r)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">switch</span> (r) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a739063053a289b5c3393d78cc77b41b2">RS_DONE</a>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;OK&quot;</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a5366e53561c2ec9a897470535ea0139c">RS_RUNNING</a>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;still running&quot;</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af2d289bbc65678b4b00f56a2e6632957">RS_BLOCKED</a>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;blocked waiting for input or output buffers&quot;</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ada22c2fc95695e6f9558da6bcca53749">RS_BAD_MAGIC</a>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;bad magic number at start of stream&quot;</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253aa997432dc2d2c8256ad41f96267a5185">RS_INPUT_ENDED</a>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;unexpected end of input&quot;</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a897ee702e0324d286881f6b8391ea340">RS_CORRUPT</a>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;stream corrupt&quot;</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a639e01179ce01c707606a8e50bf5a6aa">RS_UNIMPLEMENTED</a>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;unimplemented case&quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a403296529c4ba1653612438dd7ba9a34">RS_MEM_ERROR</a>:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;out of memory&quot;</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af510cfd1ede72dbfea416d3f295e6c6f">RS_IO_ERROR</a>:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;IO error&quot;</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ac562bd33fecdc9ab03d32c2471f1bdc9">RS_SYNTAX_ERROR</a>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;bad command line syntax&quot;</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ade41976437317deebdec5b27f7b39655">RS_INTERNAL_ERROR</a>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;library internal error&quot;</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;unexplained problem&quot;</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 <div class="ttc" id="alibrsync_8h_html"><div class="ttname"><a href="librsync_8h.html">librsync.h</a></div><div class="ttdoc">Public header for librsync.</div></div>
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253">rs_result</a></div><div class="ttdeci">rs_result</div><div class="ttdoc">Return codes from nonblocking rsync operations.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00180">librsync.h:180</a></div></div>
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253a403296529c4ba1653612438dd7ba9a34"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253a403296529c4ba1653612438dd7ba9a34">RS_MEM_ERROR</a></div><div class="ttdeci">@ RS_MEM_ERROR</div><div class="ttdoc">Out of memory.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00189">librsync.h:189</a></div></div>
@@ -145,7 +146,7 @@ $(function() {
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253ade41976437317deebdec5b27f7b39655"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253ade41976437317deebdec5b27f7b39655">RS_INTERNAL_ERROR</a></div><div class="ttdeci">@ RS_INTERNAL_ERROR</div><div class="ttdoc">Probably a library bug.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00199">librsync.h:199</a></div></div>
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253af2d289bbc65678b4b00f56a2e6632957"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af2d289bbc65678b4b00f56a2e6632957">RS_BLOCKED</a></div><div class="ttdeci">@ RS_BLOCKED</div><div class="ttdoc">Blocked waiting for more data.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00182">librsync.h:182</a></div></div>
 <div class="ttc" id="alibrsync_8h_html_a7feb858ceba3b8f3cf048d49be108253af510cfd1ede72dbfea416d3f295e6c6f"><div class="ttname"><a href="librsync_8h.html#a7feb858ceba3b8f3cf048d49be108253af510cfd1ede72dbfea416d3f295e6c6f">RS_IO_ERROR</a></div><div class="ttdeci">@ RS_IO_ERROR</div><div class="ttdoc">Error in file or network IO.</div><div class="ttdef"><b>Definition:</b> <a href="librsync_8h_source.html#l00187">librsync.h:187</a></div></div>
-<div class="ttc" id="amsg_8c_html_a9e8bc3600da0ae9e3bc1897f1538123b"><div class="ttname"><a href="msg_8c.html#a9e8bc3600da0ae9e3bc1897f1538123b">rs_strerror</a></div><div class="ttdeci">char const * rs_strerror(rs_result r)</div><div class="ttdoc">Return an English description of a rs_result value.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8c_source.html#l00045">msg.c:45</a></div></div>
+<div class="ttc" id="amsg_8c_html_a9e8bc3600da0ae9e3bc1897f1538123b"><div class="ttname"><a href="msg_8c.html#a9e8bc3600da0ae9e3bc1897f1538123b">rs_strerror</a></div><div class="ttdeci">char const * rs_strerror(rs_result r)</div><div class="ttdoc">Return an English description of a rs_result value.</div><div class="ttdef"><b>Definition:</b> <a href="msg_8c_source.html#l00046">msg.c:46</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.10-->
 <!-- start footer part -->
@@ -170,7 +171,7 @@ $(function() {
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:10 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:50 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

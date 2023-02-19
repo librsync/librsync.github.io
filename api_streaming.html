@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -69,7 +69,7 @@ $(function() {
 <a class="el" href="api_pull.html">Pull API</a> - Intermediate-complexity callback interface.</dd>
 <dd>
 <a class="el" href="api_callbacks.html">IO callbacks</a> - for reading from the basis file when doing a "patch" operation.</dd></dl>
-<h1><a class="anchor" id="autotoc_md79"></a>
+<h1><a class="anchor" id="autotoc_md80"></a>
 Creating Jobs</h1>
 <p >All streaming librsync jobs are initiated using a <code>_begin</code> function to create a <a class="el" href="librsync_8h.html#add6622b38e3fa557301a190876d5ed4a" title="Job of work to be done.">rs_job_t</a> object, passing in any necessary initialization parameters. The various jobs available are:</p>
 <ul>
@@ -88,18 +88,18 @@ Creating Jobs</h1>
 </ul>
 <p >The patch job accepts the patch as input, and uses a callback to look up blocks within the basis file.</p>
 <p >You must configure read, write and basis callbacks after creating the job but before it is run.</p>
-<h1><a class="anchor" id="autotoc_md80"></a>
+<h1><a class="anchor" id="autotoc_md81"></a>
 Running Jobs</h1>
 <p >The work of the operation is done when the application calls <a class="el" href="librsync_8h.html#aede8e0f42424b9aa29093f94b59ea029" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a>. This includes reading from input files via the callback, running the rsync algorithms, and writing output.</p>
 <p >The IO callbacks are only called from inside <a class="el" href="librsync_8h.html#aede8e0f42424b9aa29093f94b59ea029" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a>. If any of them return an error, <a class="el" href="librsync_8h.html#aede8e0f42424b9aa29093f94b59ea029" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> will generally return the same error.</p>
 <p >When librsync needs to do input or output, it calls one of the callback functions. <a class="el" href="librsync_8h.html#aede8e0f42424b9aa29093f94b59ea029" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> returns when the operation has completed or failed, or when one of the IO callbacks has blocked.</p>
 <p ><a class="el" href="librsync_8h.html#aede8e0f42424b9aa29093f94b59ea029" title="Run a rs_job state machine until it blocks (RS_BLOCKED), returns an error, or completes (RS_DONE).">rs_job_iter()</a> will usually be called in a loop, perhaps alternating librsync processing with other application functions.</p>
-<h1><a class="anchor" id="autotoc_md81"></a>
+<h1><a class="anchor" id="autotoc_md82"></a>
 Deleting Jobs</h1>
 <p >A job is deleted and its memory freed up using <a class="el" href="librsync_8h.html#a297b5522990715aff982f8556052c273" title="Deallocate job state.">rs_job_free()</a>.</p>
 <p >This is typically called when the job has completed or failed. It can be called earlier if the application decides it wants to cancel processing.</p>
 <p ><a class="el" href="librsync_8h.html#a297b5522990715aff982f8556052c273" title="Deallocate job state.">rs_job_free()</a> does not delete the output of the job, such as the sumset loaded into memory. It does delete the job's statistics.</p>
-<h1><a class="anchor" id="autotoc_md82"></a>
+<h1><a class="anchor" id="autotoc_md83"></a>
 State Machine Internals</h1>
 <p >Internally, the operations are implemented as state machines that move through various states as input and output buffers become available.</p>
 <p >All computers and programs are state machines. So why is the representation as a state machine a little more explicit (and perhaps verbose) in librsync than other places? Because we need to be able to let the real computer go off and do something else like waiting for network traffic, while still remembering where it was in the librsync state machine.</p>
@@ -140,7 +140,7 @@ State Machine Internals</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:11 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:51 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>

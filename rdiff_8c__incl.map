@@ -1,14 +1,14 @@
 <map id="rdiff.c" name="rdiff.c">
-<area shape="rect" id="node1" title="Command&#45;line network&#45;delta tool." alt="" coords="331,5,390,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,76,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="101,80,175,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="200,80,271,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="295,80,357,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="362,155,429,181"/>
-<area shape="rect" id="node7" href="$config_8h_source.html" title=" " alt="" coords="433,80,507,107"/>
-<area shape="rect" id="node8" href="$librsync_8h.html" title="Public header for librsync." alt="" coords="531,80,617,107"/>
-<area shape="rect" id="node12" href="$isprefix_8h.html" title="String prefix text function." alt="" coords="641,80,723,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="453,155,524,181"/>
-<area shape="rect" id="node10" title=" " alt="" coords="549,155,613,181"/>
-<area shape="rect" id="node11" href="$librsync__export_8h_source.html" title=" " alt="" coords="637,155,772,181"/>
+<area shape="rect" id="node1" title="Command&#45;line network&#45;delta tool." alt="" coords="351,5,409,32"/>
+<area shape="rect" id="node2" href="$config_8h_source.html" title=" " alt="" coords="5,80,80,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="105,80,175,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="200,80,275,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="299,80,370,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="394,80,457,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="448,155,515,181"/>
+<area shape="rect" id="node8" href="$librsync_8h.html" title="Public header for librsync." alt="" coords="532,80,617,107"/>
+<area shape="rect" id="node12" href="$isprefix_8h.html" title="String prefix text function." alt="" coords="641,80,724,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="539,155,610,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="635,155,699,181"/>
+<area shape="rect" id="node11" href="$librsync__export_8h_source.html" title=" " alt="" coords="723,155,858,181"/>
 </map>

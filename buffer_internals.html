@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">librsync
-   &#160;<span id="projectnumber">2.3.3</span>
+   &#160;<span id="projectnumber">2.3.4</span>
    </div>
   </td>
  </tr>
@@ -55,7 +55,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_doc_buffer_internals"></a> </p>
-<h1><a class="anchor" id="autotoc_md45"></a>
+<h1><a class="anchor" id="autotoc_md46"></a>
 Input scoop</h1>
 <p >A module called the <em>scoop</em> is used for buffering data going into librsync. It accumulates data when the application does not supply it in large enough chunks for librsync to make use of it.</p>
 <p >The scoop object is a set of fields in the rs_job_t object:: </p><pre class="fragment">char       *scoop_buf;             /* the allocation pointer */
@@ -66,18 +66,18 @@ size_t      scoop_avail;           /* the data size */
 <p >Once the scoop has been sufficiently filled, it must be completely consumed by the state function. This is easy if the state function always requests one unit of work at a time: a block, a file header element, etc.</p>
 <p >All this means that the valid data is always located at the start of the scoop, continuing for scoop_avail bytes. The library is never allowed to consume only part of the data.</p>
 <p >One the state function has consumed the data, it should call rs__scoop_reset(), which resets scoop_avail to 0.</p>
-<h1><a class="anchor" id="autotoc_md46"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 Output queue</h1>
 <p >The library can set up data to be written out by putting a pointer/length for it in the output queue:: </p><pre class="fragment">char       *outq_ptr;
 size_t      outq_bytes;
 </pre><p> The job infrastructure will make sure this is written out before the next call into the state machine.</p>
 <p >There is only one outq_ptr, so any given state function can only produce one contiguous block of output.</p>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md48"></a>
 Buffer sharing</h1>
 <p >The scoop buffer may be used by the output queue. This means that data can traverse the library with no extra copies: one copy into the scoop buffer, and one copy out. In this case outq_ptr points into scoop_buf, and outq_bytes tells how much data needs to be written.</p>
 <p >The state function calls rs__scoop_reset before returning when it is finished with the data in the scoop. However, the outq may still point into the scoop buffer, if it has not yet been able to be copied out. This means that there is data in the scoop beyond scoop_avail that must still be retained.</p>
 <p >This is safe because neither the scoop nor the state function will get to run before the output queue has completely drained.</p>
-<h1><a class="anchor" id="autotoc_md48"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 Readahead</h1>
 <p >How much readahead is required?</p>
 <p >At the moment (??) our rollsum and MD4 routines require a full contiguous block to calculate a checksum. This could be relaxed, at a possible loss of efficiency.</p>
@@ -109,7 +109,7 @@ Readahead</h1>
   ga('send', 'pageview');
 </script>
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 16 2023 19:31:11 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 19 2023 16:26:51 for librsync by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.9.4
 </small></address>
